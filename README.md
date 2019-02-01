@@ -372,7 +372,7 @@ class ViewController: UIViewController {
 ---
 ## sharedInstanceWithApiKey (apiKey, rsaKey)
 
-Create a singlton instance of the Ravelin sdk with your public keys
+Create a singleton instance of the Ravelin sdk with your public keys
 
 ### Parameters
 
