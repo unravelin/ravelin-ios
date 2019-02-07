@@ -24,7 +24,7 @@ Add `pod 'RavelinCore'` to your PodFile then from the command line `pod install`
 
 Add the following line to your Cartfile
 
-`github "unravelin/ravelin-ios" == 0.1.0`
+`github "unravelin/ravelin-ios" == 0.1.1`
 
 Then from the command line 
 
@@ -134,20 +134,6 @@ Ravelin.sharedInstance().methodName()
 
 // Variable
 let ravelin = Ravelin.sharedInstance()
-```
-
-## Validating your public key
-
-To check that your public Api key is working when you start integrating, use the checkToken method. This calls an endpoint on our servers and will display the result to the console
-
-#### Objective-C
-```objc
-[[Ravelin sharedInstance] checkToken];
-```
-
-#### Swift
-```swift
-Ravelin.sharedInstance().checkToken()
 ```
 
 ## Encrypting Cards

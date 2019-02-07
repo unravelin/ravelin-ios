@@ -55,18 +55,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) NSString *orderId;
 
 /**
- Validates your public key via a Ravelin endpoint
- - Remark: Result is output to the console
- */
-- (void)checkToken;
-
-/*!
- * Validates your public key via a Ravelin endpoint
- * @param completionHandler Completiion handler
- */
-- (void)checkToken:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
-
-/**
  Fingerprints the device and sends results to Ravelin
  */
 - (void)fingerprint;
