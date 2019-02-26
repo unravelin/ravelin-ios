@@ -10,7 +10,7 @@ This is all achieved using our library which handles client-side encryption, as 
 * [Usage](#usage)
 * [Examples](#end-to-end-example)
 * [Class Reference](#ravelin-class-reference)
-* [Licemse](#license)
+* [License](#license)
 
 ## Building the SDK from source
 
