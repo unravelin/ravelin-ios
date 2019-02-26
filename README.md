@@ -24,7 +24,7 @@ Add `pod 'RavelinCore'` to your PodFile then from the command line `pod install`
 
 Add the following line to your Cartfile
 
-`github "unravelin/ravelin-ios" == 0.1.1`
+`github "unravelin/ravelin-ios" == 0.2.0`
 
 Then from the command line 
 
@@ -101,16 +101,28 @@ To use the framework within your project, import RavelinCore where required:
 import RavelinCore
 ```
 
-The singleton Ravelin class should be accessed via the sharedInstance method. You will also need to initialise the SDK with a sharedInstanceWithApiKey method call to set your Ravelin public API and RSA keys:
+The singleton Ravelin class should be accessed via the sharedInstance method. You will first need to initialise the SDK with the `createInstance` method call with your Ravelin public API key and / or RSA keys.
+
+> Note: If you wish to use the SDK `encrypt()` method for card encryption, you must provide your RSA key.
 
 #### Objective-C
 ```objc
-self.ravelin = [Ravelin sharedInstanceWithApiKey:@"publishable_key_live_----" rsaKey:@"----|----"];
+
+// Instantiation for tracking only
+self.ravelin = [Ravelin createInstance:@"publishable_key_live_----"];
+
+// Instantiation for tracking and encryption
+self.ravelin = [Ravelin createInstance:@"publishable_key_live_----" rsaKey:@"----|----"];
 ```
 
 #### Swift
 ```swift
-let ravelin = Ravelin.sharedInstance(withApiKey: "publishable_key_live_----", rsaKey: "----|----")
+
+// Instantiation for tracking only
+let ravelin = Ravelin.createInstance("publishable_key_live_----")
+
+// Instantiation for tracking and encryption
+let ravelin = Ravelin.createInstance("publishable_key_live_----", rsaKey: "----|----")
 ```
 
 Once initialised, you can use the sharedInstance directly to access methods and properties
@@ -181,13 +193,13 @@ if let error = error {
 
 Using the Ravelin Mobile SDK, you can capture various built in events along with your own custom ones that can later be viewed in the Ravelin Dashboard.
 
-> __Ravelin.trackPage:(NSString *)pageTitle__ - to indicate when the user hits a new page. 
+> `Ravelin.trackPage:(NSString *)pageTitle` - to indicate when the user hits a new page. 
 
-> __Ravelin.trackLogin:(NSString *)pageTitle eventProperties:(NSDictionary *)eventProperties__ - to indicate that the user has just authenticated themselves. Use eventProperties to add additional key/pair information to the payload
+> `Ravelin.trackLogin:(NSString *)pageTitle eventProperties:(NSDictionary *)eventProperties` - to indicate that the user has just authenticated themselves. Use eventProperties to add additional key/pair information to the payload
 
-> __Ravelin.trackLogout:(NSString *)pageTitle eventProperties:(NSDictionary *)eventProperties__ - to indicate when the user has signed out of their session.
+> `Ravelin.trackLogout:(NSString *)pageTitle eventProperties:(NSDictionary *)eventProperties` - to indicate when the user has signed out of their session.
 
-> __Ravelin.fingerprint:(NSDictionary *)eventProperties__ – To be used at checkout to profile the users device.
+> `Ravelin.trackFingerprint:(NSDictionary *)eventProperties` – To be used at checkout to profile the users device.
 
 ## Custom Events and Metadata
 
@@ -240,7 +252,7 @@ What follows is a simple end-to-end example of using the Ravelin Framework withi
 
     
     // Make Ravelin instance with api keys
-    self.ravelin = [Ravelin sharedInstanceWithApiKey:@"publishable_key_live_----" rsaKey:@"----|----"];
+    self.ravelin = [Ravelin createInstance:@"publishable_key_live_----" rsaKey:@"----|----"];
     
     // Setup customer info and track their login
     self.ravelin.customerId = @"customer1234";
@@ -251,10 +263,10 @@ What follows is a simple end-to-end example of using the Ravelin Framework withi
     [self.ravelin trackPage:@"checkout"];
     
     // Send a device fingerprint
-    [self.ravelin fingerprint];
+    [self.ravelin trackFingerprint];
     
     // Send a device fingerprint with a completion block (if required)
-    [self.ravelin fingerprint:^(NSData *data, NSURLResponse *response, NSError *error) {
+    [self.ravelin trackFingerprint:^(NSData *data, NSURLResponse *response, NSError *error) {
         if(!error) {
             NSDictionary *responseData;
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
@@ -294,7 +306,7 @@ import RavelinCore
 class ViewController: UIViewController {
 
     // Declare Ravelin Shared Instance with API keys
-    private var ravelin : Ravelin = Ravelin.sharedInstance(withApiKey: "publishable_key_live_----", rsaKey: "----|----")
+    private var ravelin : Ravelin = Ravelin.createInstance("publishable_key_live_----", rsaKey: "----|----")
     
     
     override func viewDidLoad() {
@@ -309,27 +321,16 @@ class ViewController: UIViewController {
         ravelin.trackPage("checkout")
         
         // Send a device fingerprint
-        ravelin.fingerprint()
+        ravelin.trackFingerprint()
         
         // Send a device fingerprint with a completion block (if required)
-        ravelin.fingerprint { (data:Data, response:URLResponse, error:Error?) -> Void in
+        ravelin.trackFingerprint { (data, response, error) -> Void in
             if let error = error {
-                print(error)
-                return
-            }
-            if let httpResponse = response as? HTTPURLResponse {
+                // Handle error
+                print("Ravelin error \(error.localizedDescription)")
+            } else if let httpResponse = response as? HTTPURLResponse {
                 if httpResponse.statusCode == 200 {
-                    do {
-                        let responseData = try JSONSerialization.jsonObject(with: data, options: [.allowFragments,.mutableContainers])
-                        
-                        // Do something with responseData
-                    } catch {
-                        print(error)
-                    }
-                    
-                } else {
-                    // Status was not 200. Handle failure
-                    print("Failed")
+                    // Handle success
                 }
             }
         }
@@ -356,9 +357,24 @@ class ViewController: UIViewController {
 ## Class Methods
 
 ---
-## sharedInstanceWithApiKey (apiKey, rsaKey)
+## createInstance (apiKey)
 
-Create a singleton instance of the Ravelin sdk with your public keys
+Create a singleton instance of the Ravelin SDK with your public API key (use this method to create an SDK instance for tracking purposes only)
+
+### Parameters
+
+| Parameter     | Type               | Description  |
+| ------------- |---------------------|-------|
+| apiKey     | String     | The public api key from your Ravelin dashboard |
+
+### Return value
+
+> The singleton instance of the class
+
+---
+## createInstance (apiKey, rsaKey)
+
+Create a singleton instance of the Ravelin SDK with your public API key (use this method to create an SDK instance for tracking *and* card encryption)
 
 ### Parameters
 
@@ -370,7 +386,6 @@ Create a singleton instance of the Ravelin sdk with your public keys
 ### Return value
 
 > The singleton instance of the class
-
 ---
 
 ## sharedInstance
@@ -384,13 +399,13 @@ Get the instantiated Ravelin singleton
 
 ---
 
-## fingerprint
+## trackFingerprint
 
 Fingerprints the device and sends results to Ravelin
 
 ---
 
-## fingerprint (completionHandler)
+## trackFingerprint (completionHandler)
 
 Fingerprints the device and sends results to Ravelin
 
@@ -402,9 +417,9 @@ Fingerprints the device and sends results to Ravelin
 
 ---
 
-## fingerprint(customerId, completionHandler)
+## trackFingerprint(customerId, completionHandler)
 
-Fingerprints the device and sends results to Ravelin
+Sets a customerId if one has not already been set and sends a fingerprint to Ravelin
 
 ### Parameters
 
@@ -415,34 +430,9 @@ Fingerprints the device and sends results to Ravelin
 
 ---
 
-## generateFingerprintPayload
-Creates a complete device fingerprint payload (as used by the fingerPrint method)
-> **NOTES** Included for testing purposes. The fingerprint method uses this internally.
-
-
 ### Return value
 
 > Dictionary containing the complete payload to send
-
----
-
-## encrypt (pan, month, year, nameOnCard, &error)
-
-Generates encryption payload ready for sending to Ravelin
-
-### Parameters
-
-| Parameter     | Type               | Description  |
-| ------------- |---------------------|-------|
-| pan     | String     | A string representation of the long card number |
-| month     | String     | Expiry month of card (1-12) |
-| year     | String     | Expiry year (2 or 4 digit) |
-| nameOnCard     | String     | The customer name on the card |
-| error     | Object     | Passed as reference |
-
-### Return value
-
-> Dictionary containing methodType, aesKeyCiphertext, cardCiphertext, algorithm, keyIndex and ravelinSDKVersion
 
 ---
 

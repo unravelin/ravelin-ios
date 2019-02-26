@@ -17,14 +17,37 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface Ravelin : NSObject
 
+// Error constants
+typedef enum : int {
+    RVNEncryptionInvalidKeyLengthError = 1000,
+    RVNEncryptionInvalidHexKeyError,
+    RVNEncryptionRSAKeyMissingError,
+    RVNEncryptionKeyImportError,
+    RVNEncryptionInitError,
+    RVNEncryptionStringEncryptError,
+    RVNEncryptionRSAStringEncryptError,
+    RVNEncryptionPanInvalidError,
+    RVNEncryptionMonthInvalidError,
+    RVNEncryptionYearInvalidError
+} RVNErrors;
+
+
 /**
- Create a singlton instance of the Ravelin sdk with your public keys
- @param apiKey The public api key from your Ravelin dashboard
- @param rsaKey The public RSA key from your Ravelin dashboard
+ Create a singleton instance of the Ravelin sdk with your public key
+ @param apiKey The public API key from your Ravelin dashboard
  @return The singleton instance of the class
  - Remark: Use this method when using Ravelin in your app for the first time
  */
-+ (instancetype)sharedInstanceWithApiKey:(NSString *)apiKey rsaKey:(NSString *)rsaKey;
++ (instancetype)createInstance:(NSString *)apiKey;
+
+/**
+ Create a singleton instance of the Ravelin sdk with your public key
+ @param apiKey The public API key from your Ravelin dashboard
+ @param rsaKey The public RSA key from your Ravelin dashboard
+ @return The singleton instance of the class
+ - Remark: Use this method when using Ravelin in your app and are using the encryption methods
+ */
++ (instancetype)createInstance:(NSString *)apiKey rsaKey:(NSString *)rsaKey;
 
 /**
  Get the instantiated Ravelin singleton
@@ -37,7 +60,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) NSString *apiKey;
 
 /** The public rsa key from your dashboard */
-@property(nonatomic, strong) NSString *rsaKey;
+@property(nonatomic, strong) NSString *_Nullable rsaKey;
 
 /** Your chosen customer id */
 @property(nonatomic, strong) NSString *customerId;
@@ -57,27 +80,20 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Fingerprints the device and sends results to Ravelin
  */
-- (void)fingerprint;
+- (void)trackFingerprint;
 
 /**
  Fingerprints the device and sends results to Ravelin
  @param completionHandler Completion block to handle response
  */
-- (void)fingerprint:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
+- (void)trackFingerprint:(void (^)(NSData *_Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
 
 /**
  Fingerprints the device and sends results to Ravelin
  @param customerId The customerId to set for this device fingerprint.
  @param completionHandler Completion block to handle response
  */
-- (void)fingerprint:(NSString *)customerId completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
-
-/**
- Creates a complete device fingerprint payload (as used by the fingerPrint method)
- @return NSDictionary containing the complete payload to send
- @remarks Included for testing purposes. The fingerprint method uses this internally.
- */
-- (NSDictionary *)generateFingerprintPayload;
+- (void)trackFingerprint:(NSString *)customerId completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
 
 /**
  Generates encryption payload ready for sending to Ravelin
