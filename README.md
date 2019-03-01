@@ -24,7 +24,7 @@ Add `pod 'RavelinCore'` to your PodFile then from the command line `pod install`
 
 Add the following line to your Cartfile
 
-`github "unravelin/ravelin-ios" == 0.2.0`
+`github "unravelin/ravelin-ios" == 0.2.1`
 
 Then from the command line 
 
