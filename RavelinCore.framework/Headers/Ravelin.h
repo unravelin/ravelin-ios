@@ -116,7 +116,7 @@ typedef enum : int {
  [self track:@"CUSTOM_EVENT" eventProperties:meta];
  @endcode
  */
-- (void)track:(NSString * _Nullable)pageTitle eventName:(NSString *)eventName eventProperties:(nullable NSDictionary *)eventProperties;
+- (void)track:(NSString * _Nullable)pageTitle eventName:(NSString *)eventName eventProperties:(NSDictionary *)eventProperties;
 
 /**
  Sends a track event to Ravelin
@@ -125,7 +125,7 @@ typedef enum : int {
  @param eventProperties A dictionary of meta data to send with the event
  @param completionHandler Completion block to handle response
  */
-- (void)track:(NSString * _Nullable)pageTitle eventName:(NSString *)eventName eventProperties:(nullable NSDictionary *)eventProperties completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
+- (void)track:(NSString * _Nullable)pageTitle eventName:(NSString *)eventName eventProperties:(NSDictionary *)eventProperties completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
 
 /**
  Sends a track page event to Ravelin

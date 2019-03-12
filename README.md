@@ -24,7 +24,7 @@ Add `pod 'RavelinCore'` to your PodFile then from the command line `pod install`
 
 Add the following line to your Cartfile
 
-`github "unravelin/ravelin-ios" == 0.2.1`
+`github "unravelin/ravelin-ios" == 0.2.2`
 
 Then from the command line 
 
@@ -219,6 +219,47 @@ let pageTitle = "products"
 let eventName = "PRODUCT_SEARCH"
 let meta = ["productId" : "213", "SIZE" : "M"]
 Ravelin.sharedInstance().track(pageTitle, eventName: eventName, eventProperties: meta)
+```
+
+## Detecting paste events
+
+We can detect paste events using the UITextFieldDelegate method `shouldChangeCharactersInRange` in conjunction with the Ravelin `track` method to send a custom event.
+
+#### Objective-C
+```objc
+- (BOOL)textField:(UITextField *)iTextField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    // Only detect specific textfields in our app
+    if(iTextField.tag == 1002 || iTextField.tag == 1003) { return NO; }
+    
+    // Check if the textfield contains pasted text
+    if([string containsString:[UIPasteboard generalPasteboard].string]) {
+    
+        // Send paste event to Ravelin
+        NSString *pageTitle = @"home";
+        NSString *pasteLength = [NSString stringWithFormat:@"%ld", (long)[UIPasteboard generalPasteboard].string.length];
+        NSDictionary *meta = @{@"pasteLength": pasteLength};
+        [self.ravelin track:pageTitle eventName:@"paste" eventProperties:meta];
+    }
+    
+    return YES;
+}
+```
+
+#### Swift
+
+```swift
+func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    
+    if(string.contains(UIPasteboard.general.string ?? "")){
+        let pageTitle = "home"
+        let eventName = "paste"
+        let pasteLength : String = "\(UIPasteboard.general.string?.count ?? 0)"
+        let meta = ["pasteLength" : pasteLength]
+        self.ravelin.track(pageTitle, eventName: eventName, eventProperties: meta)
+    }
+    return true
+}
 ```
 
 > __NOTE:__ Track events have overload methods with completiton handlers
