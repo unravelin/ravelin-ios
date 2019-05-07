@@ -24,7 +24,7 @@ Add `pod 'RavelinCore'` to your PodFile then from the command line `pod install`
 
 Add the following line to your Cartfile
 
-`github "unravelin/ravelin-ios" == 0.2.3`
+`github "unravelin/ravelin-ios" == 0.2.4`
 
 Then from the command line 
 
@@ -46,12 +46,13 @@ To manually install:
 4. The framework should now be shown in Embedded Binaries and Linked Frameworks and Libraries. If you do not see it in Linked Frameworks and Libraries, repeat step 3 for this section also.
 ![alt text](docs/images/ravelin-install-embedded-binaries.png)
 
-### Preparing for the App Store (when installed manually)
+## Preparing for the App Store
 
-> The framework is a "fat binary" and contains an x86_64 build for the Xcode simulator along with device builds. At the time of writing, if you have manually installed the framework and are using Xcode to send your app to the App Store, you will need to add the script below in build phases to 'thin out' the binary to remove the simulator architectures.  This is achieved by selecting your project and going to Build Phases and using + to add a new "Run Script Phase".
+- Ravelin’s encryption algorithm qualifies for exemption provided under category 5 part 2  - Information Security ECN 5X (5A002.a.a.1) of the BIS Export Administration Regulation as the primary function is “information security” and therefore no export compliance documentation is required in App Store Connect.
 
-> ![script phases](docs/images/ravelin-build-phases-run-script.png)
-
+- The framework is a "fat binary" and contains an `x86_64` build for the Xcode simulator along with device builds. At the time of writing, if you have manually installed the framework and are using Xcode to send your app to the App Store, you will need to add the script below in build phases to 'thin out' the binary to remove the simulator architectures.  This is achieved by selecting your project and going to Build Phases and using + to add a new "Run Script Phase".
+ 
+![script phases](docs/images/ravelin-build-phases-run-script.png)
 
 ```swift
 
@@ -262,7 +263,7 @@ func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange
 }
 ```
 
-> __NOTE:__ Track events have overload methods with completiton handlers
+> __NOTE:__ Track events have overload methods with completion handlers and will accept nil values for `eventProperties`
 
 ## Fingerprint location tracking
 

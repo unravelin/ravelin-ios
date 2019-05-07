@@ -116,7 +116,7 @@ typedef enum : int {
  [self track:@"CUSTOM_EVENT" eventProperties:meta];
  @endcode
  */
-- (void)track:(NSString * _Nullable)pageTitle eventName:(NSString *)eventName eventProperties:(NSDictionary *)eventProperties;
+- (void)track:(NSString * _Nullable)pageTitle eventName:(NSString *)eventName eventProperties:(NSDictionary * _Nullable)eventProperties;
 
 /**
  Sends a track event to Ravelin
@@ -125,7 +125,7 @@ typedef enum : int {
  @param eventProperties A dictionary of meta data to send with the event
  @param completionHandler Completion block to handle response
  */
-- (void)track:(NSString * _Nullable)pageTitle eventName:(NSString *)eventName eventProperties:(NSDictionary *)eventProperties completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
+- (void)track:(NSString * _Nullable)pageTitle eventName:(NSString *)eventName eventProperties:(NSDictionary * _Nullable)eventProperties completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
 
 /**
  Sends a track page event to Ravelin
@@ -138,7 +138,7 @@ typedef enum : int {
  @param pageTitle The title of the current page
  @param eventProperties A dictionary of meta data to send with the event
  */
-- (void)trackPage:(NSString * _Nullable)pageTitle eventProperties:(NSDictionary *)eventProperties;
+- (void)trackPage:(NSString * _Nullable)pageTitle eventProperties:(NSDictionary * _Nullable)eventProperties;
 
 /**
  Sends a track page event to Ravelin
@@ -146,7 +146,7 @@ typedef enum : int {
  @param eventProperties A dictionary of meta data to send with the event
  @param completionHandler Completion block to handle response
  */
-- (void)trackPage:(NSString * _Nullable)pageTitle eventProperties:(NSDictionary *)eventProperties completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
+- (void)trackPage:(NSString * _Nullable)pageTitle eventProperties:(NSDictionary * _Nullable)eventProperties completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
 
 /**
  Sends a track login event to Ravelin and sends customerId automatically if set
@@ -159,7 +159,7 @@ typedef enum : int {
  @param pageTitle The title of the current page
  @param eventProperties A dictionary of meta data to send with the event
  */
-- (void)trackLogin:(NSString * _Nullable)pageTitle eventProperties:(NSDictionary *)eventProperties;
+- (void)trackLogin:(NSString * _Nullable)pageTitle eventProperties:(NSDictionary * _Nullable)eventProperties;
 
 /**
  Sends a track login event to Ravelin
@@ -167,7 +167,7 @@ typedef enum : int {
  @param eventProperties A dictionary of meta data to send with the event
  @param completionHandler Completion block to handle response
  */
-- (void)trackLogin:(NSString * _Nullable)pageTitle eventProperties:(NSDictionary *)eventProperties completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
+- (void)trackLogin:(NSString * _Nullable)pageTitle eventProperties:(NSDictionary * _Nullable)eventProperties completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
 
 /**
  Ends current Ravelin session and sends logout event to Ravelin
@@ -180,7 +180,7 @@ typedef enum : int {
  @param pageTitle The title of the current page
  @param eventProperties A dictionary of meta data to send with the event
  */
-- (void)trackLogout:(NSString * _Nullable)pageTitle eventProperties:(NSDictionary *)eventProperties;
+- (void)trackLogout:(NSString * _Nullable)pageTitle eventProperties:(NSDictionary * _Nullable)eventProperties;
 
 /**
  Sends a track logout event to Ravelin
@@ -188,7 +188,7 @@ typedef enum : int {
  @param eventProperties A dictionary of meta data to send with the event
  @param completionHandler Completion block to handle response
  */
-- (void)trackLogout:(NSString * _Nullable)pageTitle eventProperties:(NSDictionary *)eventProperties completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
+- (void)trackLogout:(NSString * _Nullable)pageTitle eventProperties:(NSDictionary * _Nullable)eventProperties completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
 
 // Force singleton use by making init and new unavailable
 - (instancetype)init NS_UNAVAILABLE;
