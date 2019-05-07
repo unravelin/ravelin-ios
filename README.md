@@ -1,8 +1,24 @@
 # Getting Started
 
-The Mobile SDK provides a means of adding customer information to Ravelin without having to handle PCI-compliant data. The library is intended to work in your apps where you have access to card details the customer has entered. Our SDK will encrypt sensitive data so it can pass through your servers to Ravelin and  reduce the scope of your PCI compliance.
+The Ravelin Mobile SDKs are critical to our ability to provide informed decisions to our clients. 
 
-This is all achieved using our library which handles client-side encryption, as well as our device and session tracking functionality.
+Like the JavaScript library, the SDK enables:
+
+* The generation of a unique and persistent device ID
+* The collection of additional device details
+* Session tracking 
+* If relevant to your integration, the encryption of card details 
+
+You can chose what functionality of the SDK you would like to use. However, at a mimimum we advise that you use the SDK to generate a reliable device ID and to send the additional device details for your app traffic. Device IDs are critical throughout our fraud prevention tool, especially for use in our graph database.  
+
+## Getting Started
+
+Before you can integrate with the Ravelin mobile SDK for iOS, you will need:
+
+* to locate the Ravelin Core SDK on CocoaPods (if you want to install via Cocoapods)
+* valid API keys which are available in the Ravelin Dashboard in the account menu under the Developer option
+
+If you have any questions on getting started, please ask us in your Ravelin support channel on Slack.
 
 ## Contents
 
@@ -151,7 +167,9 @@ let ravelin = Ravelin.sharedInstance()
 
 ## Encrypting Cards
 
-The primary goal of the Ravelin Mobile SDK is to securely send encrypted card information to Ravelin without handling PCI-compliant data. When collecting the card details, we encrypt the values to send using the code method below. Validation is performed, confirming that expiry dates are valid and that the PAN is at least 13 characters. Should any validation checks fail, nil is returned from the method. Pass an error by ref to determine the cause of failure if any occurs.
+Depending on your integration, you may want to encrypt card details via the SDK. The SDK can be used to allow the secure sharing of card information with Ravelin whilst removing the need to handle PCI-compliant data.
+
+When collecting the card details, we encrypt the values to send using the code method below. Validation is performed, confirming that expiry dates are valid and that the PAN is at least 13 characters. Should any validation checks fail, `nil` is returned from the method. Pass an error by ref to determine the cause of failure if any occurs.
 
 #### Objective-C
 ```objc
@@ -192,7 +210,7 @@ if let error = error {
 
 ## Tracking Activity
 
-Using the Ravelin Mobile SDK, you can capture various built in events along with your own custom ones that can later be viewed in the Ravelin Dashboard.
+Using the Ravelin Mobile SDK, you can capture various built in events along with your own custom ones that can later be viewed in the Ravelin Dashboard. This can be very useful for analysts to gain additional context during an investigation. For example, if you can see that a user is going through unexpected parts of your customer journey at a set speed on a new device that could indicate suspicious activity. 
 
 > `Ravelin.trackPage:(NSString *)pageTitle` - to indicate when the user hits a new page. 
 
