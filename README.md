@@ -335,7 +335,7 @@ What follows is a simple end-to-end example of using the Ravelin Framework withi
     
     // Make RavelinEncrypt instance with rsa key
     self.ravelinEncrypt = [RVNEncryption sharedInstance];
-	self.ravelinEncrypt.rsaKey = @"----|----";
+    self.ravelinEncrypt.rsaKey = @"----|----";
 
     // Setup customer info and track their login
     self.ravelin.customerId = @"customer1234";
