@@ -9,6 +9,11 @@ Like the JavaScript library, the SDK enables:
 * Session tracking 
 * If relevant to your integration, the encryption of card details 
 
+We have two frameworks within the SDK:
+
+* RavelinCore.framework - Which is used for deviceId, fingerprinting and tracking activity
+* RavelinEncrypt.framework - for card details encryption
+
 You can chose what functionality of the SDK you would like to use. However, at a mimimum we advise that you use the SDK to generate a reliable device ID and to send the additional device details for your app traffic. Device IDs are critical throughout our fraud prevention tool, especially for use in our graph database.  
 
 ## Getting Started
@@ -34,13 +39,13 @@ If you wish to build the framework from source, the source code repository uses 
 
 ## Installing the Ravelin Mobile SDK via Cocoapods
 
-Add `pod 'RavelinCore'` to your PodFile then from the command line `pod install`
+Add `pod 'RavelinCore'` (for fingerprinting and tracking) and/or `pod 'RavelinEncrypt'` (if using encryption) to your PodFile then from the command line `pod install`
 
 ## Installing the Ravelin Mobile SDK via Carthage
 
 Add the following line to your Cartfile
 
-`github "unravelin/ravelin-ios" == 0.2.4`
+`github "unravelin/ravelin-ios" == 0.3.0`
 
 Then from the command line 
 
@@ -48,7 +53,7 @@ Then from the command line
 
 ## Installing the Ravelin Mobile SDK (manually)
 
-The Ravelin Mobile SDK is provided as a precompiled Cocoa Touch framework.
+The Ravelin Mobile SDK is provided as precompiled Cocoa Touch frameworks.
 
 To manually install:
 
@@ -61,6 +66,10 @@ To manually install:
 
 4. The framework should now be shown in Embedded Binaries and Linked Frameworks and Libraries. If you do not see it in Linked Frameworks and Libraries, repeat step 3 for this section also.
 ![alt text](docs/images/ravelin-install-embedded-binaries.png)
+
+If using encryption, follow the same steps for RavelinEncrypt.framework
+
+Note: You can use RavelinCore and RavelinEncrypt independently, or you can use both together. RavelinCore provides fingerprinting and session tracking functionality, while RavelinEncrypt provides encryption only.
 
 ## Preparing for the App Store
 
@@ -106,21 +115,23 @@ done
 
 ## Usage
 
-To use the framework within your project, import RavelinCore where required:
+To use the framework within your project, import RavelinCore and/or RavelinEncrypt where required:
 
 #### Objective-C
 ```objc
 #import <RavelinCore/Ravelin.h>
+#import <RavelinEncrypt/RavelinEncrypt.h>
 ```
 
 #### Swift
 ```swift
 import RavelinCore
+import RavelinEncrypt
 ```
 
-The singleton Ravelin class should be accessed via the sharedInstance method. You will first need to initialise the SDK with the `createInstance` method call with your Ravelin public API key and / or RSA keys.
+The singleton Ravelin class should be accessed via the sharedInstance method. You will first need to initialise the SDK with the `createInstance` method call with your Ravelin public API key.
 
-> Note: If you wish to use the SDK `encrypt()` method for card encryption, you must provide your RSA key.
+The singleton RVNEncryption class should be access via the sharedInstance method. You must then provide your RSA key for card encryption.
 
 #### Objective-C
 ```objc
@@ -128,8 +139,9 @@ The singleton Ravelin class should be accessed via the sharedInstance method. Yo
 // Instantiation for tracking only
 self.ravelin = [Ravelin createInstance:@"publishable_key_live_----"];
 
-// Instantiation for tracking and encryption
-self.ravelin = [Ravelin createInstance:@"publishable_key_live_----" rsaKey:@"----|----"];
+// Instantiation for encryption
+self.ravelinEncrypt = [RVNEncryption sharedInstance];
+self.ravelinEncrypt.rsaKey = @"----|----";
 ```
 
 #### Swift
@@ -138,8 +150,9 @@ self.ravelin = [Ravelin createInstance:@"publishable_key_live_----" rsaKey:@"---
 // Instantiation for tracking only
 let ravelin = Ravelin.createInstance("publishable_key_live_----")
 
-// Instantiation for tracking and encryption
-let ravelin = Ravelin.createInstance("publishable_key_live_----", rsaKey: "----|----")
+// Instantiation for encryption
+let ravelinEncrypt = RVNEncryption.sharedInstance()
+ravelinEncrypt.rsaKey = "----|----"
 ```
 
 Once initialised, you can use the sharedInstance directly to access methods and properties
@@ -149,9 +162,11 @@ Once initialised, you can use the sharedInstance directly to access methods and 
 
 // Directly
 [[Ravelin sharedInstance] methodName];
+[[RVNEncryption sharedInstance]] methodName];
 
 // Variable
 Ravelin *ravelin = [Ravelin sharedInstance];
+RVNEncryption *ravelinEncrypt = [RVNEncryption sharedInstance];
 
 ```
 
@@ -160,9 +175,11 @@ Ravelin *ravelin = [Ravelin sharedInstance];
 
 // Directly
 Ravelin.sharedInstance().methodName()
+RVNEncryption.sharedInstance().methodName()
 
 // Variable
 let ravelin = Ravelin.sharedInstance()
+let ravelinEncrypt = RVNEncryption.sharedInstance()
 ```
 
 ## Encrypting Cards
@@ -183,7 +200,7 @@ NSString *cardHolder = @"Mr John Doe";
 NSError *error;
 
 // Encrypt
-NSDictionary *encryptionPayload = [[Ravelin sharedInstance] encrypt:pan month:month year:year nameOnCard:cardHolder error:&error];
+NSDictionary *encryptionPayload = [[RVNEncryption sharedInstance] encrypt:pan month:month year:year nameOnCard:cardHolder error:&error];
 
 if(!error) {
     NSLog(@"Ravelin encryption payload: %@",encryptionPayload);
@@ -198,7 +215,7 @@ if(!error) {
 ```swift
 var error:NSError? = nil
 
-let encryptionPayload = Ravelin.sharedInstance().encrypt("41111111111111", month: "10", year: "10", nameOnCard: "Mr John Doe", error: &error)
+let encryptionPayload = RVNEncryption.sharedInstance().encrypt("41111111111111", month: "10", year: "10", nameOnCard: "Mr John Doe", error: &error)
 
 if let error = error {
     print("Ravelin encryption error \(error.localizedDescription)")
@@ -300,8 +317,10 @@ What follows is a simple end-to-end example of using the Ravelin Framework withi
 #import "ViewController.h"
 #import <UIKit/UIKit.h>
 #import <RavelinCore/Ravelin.h>
+#import <RavelinEncrypt/RavelinEncrypt.h>
 @interface ViewController ()
 @property (strong, nonatomic) Ravelin *ravelin;
+@property (strong, nonatomic) RVNEncryption *ravelinEncrypt;
 @end
 
 @implementation ViewController
@@ -312,8 +331,12 @@ What follows is a simple end-to-end example of using the Ravelin Framework withi
 
     
     // Make Ravelin instance with api keys
-    self.ravelin = [Ravelin createInstance:@"publishable_key_live_----" rsaKey:@"----|----"];
+    self.ravelin = [Ravelin createInstance:@"publishable_key_live_----"];
     
+    // Make RavelinEncrypt instance with rsa key
+    self.ravelinEncrypt = [RVNEncryption sharedInstance];
+    self.ravelinEncrypt.rsaKey = @"----|----";
+
     // Setup customer info and track their login
     self.ravelin.customerId = @"customer1234";
     self.ravelin.orderId = @"web-001";
@@ -344,7 +367,7 @@ What follows is a simple end-to-end example of using the Ravelin Framework withi
     
     // Encrypt customer card details, ready for sending for payment
     NSError *error;
-    NSDictionary *encryptionPayload = [self.ravelin encrypt:@"41111111111111" month:@"10" year:@"20" nameOnCard:@"Mr John Doe" error:&error];
+    NSDictionary *encryptionPayload = [self.ravelinEncrypt encrypt:@"41111111111111" month:@"10" year:@"20" nameOnCard:@"Mr John Doe" error:&error];
     if(!error) {
         NSLog(@"Ravelin Encryption payload: %@", encryptionPayload);
     } else {
@@ -362,15 +385,22 @@ What follows is a simple end-to-end example of using the Ravelin Framework withi
 ```swift
 import UIKit
 import RavelinCore
+import RavelinEncrypt
 
 class ViewController: UIViewController {
 
     // Declare Ravelin Shared Instance with API keys
-    private var ravelin : Ravelin = Ravelin.createInstance("publishable_key_live_----", rsaKey: "----|----")
+    private var ravelin : Ravelin = Ravelin.createInstance("publishable_key_live_----")
+    
+    private var ravelinEncrypt = RVNEncryption.sharedInstance()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set up ravelin encryption RSA key
+        
+        ravelinEncrypt.rsaKey = "----|----"
         
         // Setup customer info and track their login
         ravelin.customerId = "customer1234"
@@ -397,7 +427,7 @@ class ViewController: UIViewController {
         
         // Encrypt customer card details, ready for sending for payment
         var error:NSError? = nil
-        let encryptionPayload = ravelin.encrypt("41111111111111", month: "10", year: "20", nameOnCard: "Mr John Doe", error: &error)
+        let encryptionPayload = ravelinEncrypt.encrypt("41111111111111", month: "10", year: "20", nameOnCard: "Mr John Doe", error: &error)
         if let error = error {
             print("Ravelin encryption error \(error.localizedDescription)")
         } else {
@@ -588,11 +618,6 @@ Ends current Ravelin session and sends logout event to Ravelin
 ## apiKey
 
 > The public api key from your dashboard 
-
-
-## rsaKey
-
-> The public rsa key from your dashboard
 
 
 ## customerId

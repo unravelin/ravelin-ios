@@ -17,21 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface Ravelin : NSObject
 
-// Error constants
-typedef enum : int {
-    RVNEncryptionInvalidKeyLengthError = 1000,
-    RVNEncryptionInvalidHexKeyError,
-    RVNEncryptionRSAKeyMissingError,
-    RVNEncryptionKeyImportError,
-    RVNEncryptionInitError,
-    RVNEncryptionStringEncryptError,
-    RVNEncryptionRSAStringEncryptError,
-    RVNEncryptionPanInvalidError,
-    RVNEncryptionMonthInvalidError,
-    RVNEncryptionYearInvalidError
-} RVNErrors;
-
-
 /**
  Create a singleton instance of the Ravelin sdk with your public key
  @param apiKey The public API key from your Ravelin dashboard
@@ -45,22 +30,19 @@ typedef enum : int {
  @param apiKey The public API key from your Ravelin dashboard
  @param rsaKey The public RSA key from your Ravelin dashboard
  @return The singleton instance of the class
- - Remark: Use this method when using Ravelin in your app and are using the encryption methods
+ - Remark: This method is now deprecated, as encryption is now handled in the RavelinEncrypt framework. Use createInstance:apiKey instead.
  */
-+ (instancetype)createInstance:(NSString *)apiKey rsaKey:(NSString *)rsaKey;
++ (instancetype)createInstance:(NSString *)apiKey rsaKey:(NSString *)rsaKey __deprecated_msg("Use createInstance:apiKey instead - encryption is now handled in the RavelinEncrypt framework");
 
 /**
  Get the instantiated Ravelin singleton
  @return The singleton instance of the class
- - Remark: You will need to set apiKey and rsaKey before encrpytion
+ - Remark: You will need to set apiKey before use
  */
 + (instancetype)sharedInstance;
 
 /** The public api key from your dashboard */
 @property(nonatomic, strong) NSString *apiKey;
-
-/** The public rsa key from your dashboard */
-@property(nonatomic, strong) NSString *_Nullable rsaKey;
 
 /** Your chosen customer id */
 @property(nonatomic, strong) NSString *customerId;
@@ -94,17 +76,6 @@ typedef enum : int {
  @param completionHandler Completion block to handle response
  */
 - (void)trackFingerprint:(NSString *)customerId completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
-
-/**
- Generates encryption payload ready for sending to Ravelin
- @param pan A string representation of the long card number
- @param month Expiry month of card (1-12)
- @param year Expiry year (2 or 4 digit)
- @param nameOnCard The customer name on the card
- @param error Passed as reference
- @return Dictionary containing methodType, aesKeyCiphertext, cardCiphertext, algorithm, keyIndex and ravelinSDKVersion
- */
-- (NSDictionary *)encrypt:(NSString *)pan month:(NSString *)month year:(NSString *)year nameOnCard:(NSString *)nameOnCard error:(NSError **)error;
 
 /**
  Sends a track event to Ravelin
