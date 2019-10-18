@@ -1,0 +1,6 @@
+framework module RavelinEncrypt {
+  umbrella header "RavelinEncrypt.h"
+
+  export *
+  module * { export * }
+}
