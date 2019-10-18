@@ -9,6 +9,11 @@ Like the JavaScript library, the SDK enables:
 * Session tracking 
 * If relevant to your integration, the encryption of card details 
 
+We have two frameworks within the SDK:
+
+* RavelinCore.framework - Which is used for deviceId, fingerprinting and tracking activity
+* RavelinEncrypt.framework - for card details encryption
+
 You can chose what functionality of the SDK you would like to use. However, at a mimimum we advise that you use the SDK to generate a reliable device ID and to send the additional device details for your app traffic. Device IDs are critical throughout our fraud prevention tool, especially for use in our graph database.  
 
 ## Getting Started
