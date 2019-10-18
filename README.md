@@ -115,7 +115,7 @@ To use the framework within your project, import RavelinCore and/or RavelinEncry
 #### Objective-C
 ```objc
 #import <RavelinCore/Ravelin.h>
-#import <RavelinEncryption/RVNEncryption.h>
+#import <RavelinEncrypt/RavelinEncrypt.h>
 ```
 
 #### Swift
