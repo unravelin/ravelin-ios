@@ -317,8 +317,10 @@ What follows is a simple end-to-end example of using the Ravelin Framework withi
 #import "ViewController.h"
 #import <UIKit/UIKit.h>
 #import <RavelinCore/Ravelin.h>
+#import <RavelinEncrypt/RavelinEncrypt.h>
 @interface ViewController ()
 @property (strong, nonatomic) Ravelin *ravelin;
+@property (strong, nonatomic) RVNEncryption *ravelinEncrypt;
 @end
 
 @implementation ViewController
@@ -329,8 +331,12 @@ What follows is a simple end-to-end example of using the Ravelin Framework withi
 
     
     // Make Ravelin instance with api keys
-    self.ravelin = [Ravelin createInstance:@"publishable_key_live_----" rsaKey:@"----|----"];
+    self.ravelin = [Ravelin createInstance:@"publishable_key_live_----"];
     
+    // Make RavelinEncrypt instance with rsa key
+    self.ravelinEncrypt = [RVNEncryption sharedInstance];
+	self.ravelinEncrypt.rsaKey = @"----|----";
+
     // Setup customer info and track their login
     self.ravelin.customerId = @"customer1234";
     self.ravelin.orderId = @"web-001";
@@ -361,7 +367,7 @@ What follows is a simple end-to-end example of using the Ravelin Framework withi
     
     // Encrypt customer card details, ready for sending for payment
     NSError *error;
-    NSDictionary *encryptionPayload = [self.ravelin encrypt:@"41111111111111" month:@"10" year:@"20" nameOnCard:@"Mr John Doe" error:&error];
+    NSDictionary *encryptionPayload = [self.ravelinEncrypt encrypt:@"41111111111111" month:@"10" year:@"20" nameOnCard:@"Mr John Doe" error:&error];
     if(!error) {
         NSLog(@"Ravelin Encryption payload: %@", encryptionPayload);
     } else {
@@ -379,15 +385,22 @@ What follows is a simple end-to-end example of using the Ravelin Framework withi
 ```swift
 import UIKit
 import RavelinCore
+import RavelinEncrypt
 
 class ViewController: UIViewController {
 
     // Declare Ravelin Shared Instance with API keys
-    private var ravelin : Ravelin = Ravelin.createInstance("publishable_key_live_----", rsaKey: "----|----")
+    private var ravelin : Ravelin = Ravelin.createInstance("publishable_key_live_----")
+    
+    private var ravelinEncrypt = RVNEncryption.sharedInstance()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set up ravelin encryption RSA key
+        
+        ravelinEncrypt.rsaKey = "----|----"
         
         // Setup customer info and track their login
         ravelin.customerId = "customer1234"
@@ -414,7 +427,7 @@ class ViewController: UIViewController {
         
         // Encrypt customer card details, ready for sending for payment
         var error:NSError? = nil
-        let encryptionPayload = ravelin.encrypt("41111111111111", month: "10", year: "20", nameOnCard: "Mr John Doe", error: &error)
+        let encryptionPayload = ravelinEncrypt.encrypt("41111111111111", month: "10", year: "20", nameOnCard: "Mr John Doe", error: &error)
         if let error = error {
             print("Ravelin encryption error \(error.localizedDescription)")
         } else {
@@ -605,11 +618,6 @@ Ends current Ravelin session and sends logout event to Ravelin
 ## apiKey
 
 > The public api key from your dashboard 
-
-
-## rsaKey
-
-> The public rsa key from your dashboard
 
 
 ## customerId
