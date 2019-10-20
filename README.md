@@ -20,7 +20,7 @@ You can chose what functionality of the SDK you would like to use. However, at a
 
 Before you can integrate with the Ravelin mobile SDK for iOS, you will need:
 
-* to locate the Ravelin Core SDK on CocoaPods (if you want to install via Cocoapods)
+* to locate RavelinCore and/or RavelinEncrypt on CocoaPods (if you want to install via Cocoapods). You only need the RavelinCore pod if you do not need to use the encryption functionality.
 * valid API keys which are available in the Ravelin Dashboard in the account menu under the Developer option
 
 If you have any questions on getting started, please ask us in your Ravelin support channel on Slack.
@@ -444,6 +444,8 @@ class ViewController: UIViewController {
 
 # Ravelin Class Reference
 
+Note: The Ravelin class requires the RavelinCore pod.
+
 ## Class Methods
 
 ---
@@ -461,21 +463,6 @@ Create a singleton instance of the Ravelin SDK with your public API key (use thi
 
 > The singleton instance of the class
 
----
-## createInstance (apiKey, rsaKey)
-
-Create a singleton instance of the Ravelin SDK with your public API key (use this method to create an SDK instance for tracking *and* card encryption)
-
-### Parameters
-
-| Parameter     | Type               | Description  |
-| ------------- |---------------------|-------|
-| apiKey     | String     | The public api key from your Ravelin dashboard |
-| rsaKey     | String     | The public RSA key from your Ravelin dashboard |
-
-### Return value
-
-> The singleton instance of the class
 ---
 
 ## sharedInstance
@@ -523,26 +510,6 @@ Sets a customerId if one has not already been set and sends a fingerprint to Rav
 ### Return value
 
 > Dictionary containing the complete payload to send
-
----
-
-## encrypt (pan, month, year, nameOnCard, &error)
-
-Generates encryption payload ready for sending to Ravelin
-
-### Parameters
-
-| Parameter     | Type               | Description  |
-| ------------- |---------------------|-------|
-| pan     | String     | A string representation of the long card number |
-| month     | String     | Expiry month of card (1-12) |
-| year     | String     | Expiry year (2 or 4 digit) |
-| nameOnCard     | String     | The customer name on the card |
-| error     | Object     | Passed as reference |
-
-### Return value
-
-> Dictionary containing methodType, aesKeyCiphertext, cardCiphertext, algorithm, keyIndex and ravelinSDKVersion
 
 ---
 
@@ -608,7 +575,6 @@ Ends current Ravelin session and sends logout event to Ravelin
 
 > Also available with a completion handler: trackLogout (pageTitle, eventProperties, completionHandler)
 
-
 ---
 
 ## Class Properties
@@ -643,6 +609,54 @@ Ends current Ravelin session and sends logout event to Ravelin
 ## orderId
 
 > Your chosen order id
+
+# RVNEncryption Class Reference
+
+Note: The RVNEncryption class requires the RavelinEncrypt pod.
+
+## Class Methods
+
+---
+
+## sharedInstance
+
+Get the instantiated RVNEncryption singleton
+
+
+### Return value
+
+> The singleton instance of the class
+
+---
+
+## encrypt (pan, month, year, nameOnCard, &error)
+
+Generates encryption payload ready for sending to Ravelin
+
+### Parameters
+
+| Parameter     | Type               | Description  |
+| ------------- |---------------------|-------|
+| pan     | String     | A string representation of the long card number |
+| month     | String     | Expiry month of card (1-12) |
+| year     | String     | Expiry year (2 or 4 digit) |
+| nameOnCard     | String     | The customer name on the card |
+| error     | Object     | Passed as reference |
+
+### Return value
+
+> Dictionary containing methodType, aesKeyCiphertext, cardCiphertext, algorithm, keyIndex and ravelinSDKVersion
+
+--- 
+
+## Class Properties
+
+---
+
+## rsaKey
+
+> The public rsa key from your dashboard
+
 
 # License
 
