@@ -446,7 +446,7 @@ class ViewController: UIViewController {
 
 Note: The Ravelin class requires the RavelinCore pod.
 
-## Class Methods
+## Ravelin Class Methods
 
 ---
 ## createInstance (apiKey)
@@ -577,7 +577,7 @@ Ends current Ravelin session and sends logout event to Ravelin
 
 ---
 
-## Class Properties
+## Ravelin Class Properties
 
 ---
 
@@ -614,7 +614,7 @@ Ends current Ravelin session and sends logout event to Ravelin
 
 Note: The RVNEncryption class requires the RavelinEncrypt pod.
 
-## Class Methods
+## RVNEncryption Class Methods
 
 ---
 
@@ -649,13 +649,13 @@ Generates encryption payload ready for sending to Ravelin
 
 --- 
 
-## Class Properties
+## RVNEncryption Class Properties
 
 ---
 
 ## rsaKey
 
-> The public rsa key from your dashboard
+> The public RSA key from your dashboard
 
 
 # License
