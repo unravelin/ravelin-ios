@@ -27,5 +27,5 @@ If you have any questions on getting started, please ask us in your Ravelin supp
 
 ## Further information
 
-* [Further information on using RavelinCore](RavelinCore.md)
-* [Further information on using RavelinEncrypt](RavelinEncrypt.md)
+* [Further information on using RavelinCore](https://github.com/unravelin/ravelin-ios/blob/0.3.0-docs/RavelinCore.md)
+* [Further information on using RavelinEncrypt](https://github.com/unravelin/ravelin-ios/blob/0.3.0-docs/RavelinEncrypt.md)

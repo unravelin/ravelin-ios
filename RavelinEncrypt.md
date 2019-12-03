@@ -1,3 +1,5 @@
+## Contents
+
 * [Installation](#installing-the-ravelin-encryption-sdk-via-cocoapods)
 * [Usage](#usage)
 * [Examples](#end-to-end-example)
@@ -36,7 +38,6 @@ To manually install:
 ![alt text](docs/images/ravelin-install-copy-items-prompt.png)
 
 4. The framework should now be shown in Embedded Binaries and Linked Frameworks and Libraries. If you do not see it in Linked Frameworks and Libraries, repeat step 3 for this section also.
-![alt text](docs/images/ravelin-install-embedded-binaries.png)
 
 Note: You can use RavelinCore and RavelinEncrypt independently, or you can use both together. RavelinCore provides fingerprinting and session tracking functionality, while RavelinEncrypt provides encryption only.
 
@@ -183,9 +184,6 @@ if let error = error {
 
 What follows is a simple end-to-end example of using the Ravelin Framework within a View.
 
-> __NOTE:__ All Ravelin network methods are asynchronous. Completion blocks are provided so you can handle each request accordingly. The example code will not necessarily call each method sequentially and is for demonstration purposes only.
-
-
 #### Objective-C
 ```objc
 #import "ViewController.h"
@@ -249,8 +247,6 @@ class ViewController: UIViewController {
 
 # RVNEncryption Class Reference
 
-Note: The RVNEncryption class requires the RavelinEncrypt pod.
-
 ## RVNEncryption Class Methods
 
 ---
@@ -297,4 +293,4 @@ Generates encryption payload ready for sending to Ravelin
 
 # License
 
-License information can be found [here](LICENSE)
+License information can be found [here](https://github.com/unravelin/ravelin-ios/blob/0.3.0-docs/LICENSE)
