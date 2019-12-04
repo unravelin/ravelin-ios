@@ -1,4 +1,4 @@
-# Getting Started
+# Ravelin iOS SDK
 
 The Ravelin Mobile SDKs are critical to our ability to provide informed decisions to our clients. 
 
@@ -25,7 +25,8 @@ Before you can integrate with the Ravelin mobile SDK for iOS, you will need:
 
 If you have any questions on getting started, please ask us in your Ravelin support channel on Slack.
 
-## Further information
+## How to use the SDK
 
-* [Further information on using RavelinCore](https://github.com/unravelin/ravelin-ios/blob/0.3.0-docs/RavelinCore.md)
-* [Further information on using RavelinEncrypt](https://github.com/unravelin/ravelin-ios/blob/0.3.0-docs/RavelinEncrypt.md)
+* [How to use RavelinCore](https://github.com/unravelin/ravelin-ios/blob/0.3.0-docs/RavelinCore.md)
+* [How to use RavelinEncrypt](https://github.com/unravelin/ravelin-ios/blob/0.3.0-docs/RavelinEncrypt.md)
+* For more details please check the [Ravelin Documentation for the iOS SDK](https://developer.ravelin.com/libraries-and-sdks/mobile-sdk/ios/)
