@@ -1,20 +1,23 @@
+# How to use RavelinEncrypt
+
 ## Contents
 
-* [Installation](#installing-the-ravelin-encryption-sdk-via-cocoapods)
+* [Building And Installation](#building-and-installation)
 * [Usage](#usage)
 * [Examples](#end-to-end-example)
 * [Class Reference](#rvnencryption-class-reference)
 * [License](#license)
 
-## Building the SDK from source
+## Building and Installation
+### Building the SDK from source
 
 If you wish to build the framework from source, the source code repository uses Git LFS (large file storage) to store some files. Please install Git-LFS before cloning locally. Follow the instructions on the [Git LFS website](https://git-lfs.github.com/) to set LFS up.
 
-## Installing the Ravelin Encryption SDK via Cocoapods
+### Installing the Ravelin Encryption SDK via Cocoapods
 
 Add `pod 'RavelinEncrypt'` to your PodFile then from the command line `pod install`
 
-## Installing the Ravelin Encryption SDK via Carthage
+### Installing the Ravelin Encryption SDK via Carthage
 
 Add the following line to your Cartfile
 
@@ -24,7 +27,7 @@ Then from the command line
 
 `carthage update`
 
-## Installing the Ravelin Encryption SDK (manually)
+### Installing the Ravelin Encryption SDK (manually)
 
 The Ravelin Encryption SDK is provided as a precompiled Cocoa Touch framework.
 
@@ -41,7 +44,7 @@ To manually install:
 
 Note: You can use RavelinCore and RavelinEncrypt independently, or you can use both together. RavelinCore provides fingerprinting and session tracking functionality, while RavelinEncrypt provides encryption only.
 
-## Preparing for the App Store
+### Preparing for the App Store
 
 - Ravelin’s encryption algorithm qualifies for exemption provided under category 5 part 2  - Information Security ECN 5X (5A002.a.a.1) of the BIS Export Administration Regulation as the primary function is “information security” and therefore no export compliance documentation is required in App Store Connect.
 
@@ -137,7 +140,7 @@ RVNEncryption.sharedInstance().methodName()
 let ravelinEncrypt = RVNEncryption.sharedInstance()
 ```
 
-## Encrypting Cards
+### Encrypting Cards
 
 The SDK can be used to allow the secure sharing of card information with Ravelin whilst removing the need to handle PCI-compliant data.
 
@@ -245,28 +248,28 @@ class ViewController: UIViewController {
 }
 ```
 
-# RVNEncryption Class Reference
+## RVNEncryption Class Reference
 
-## RVNEncryption Class Methods
+### RVNEncryption Class Methods
 
 ---
 
-## sharedInstance
+### sharedInstance
 
 Get the instantiated RVNEncryption singleton
 
 
-### Return value
+**Return value**
 
-> The singleton instance of the class
+The singleton instance of the class
 
 ---
 
-## encrypt (pan, month, year, nameOnCard, &error)
+### encrypt (pan, month, year, nameOnCard, &error)
 
 Generates encryption payload ready for sending to Ravelin
 
-### Parameters
+**Parameters**
 
 | Parameter     | Type               | Description  |
 | ------------- |---------------------|-------|
@@ -276,19 +279,19 @@ Generates encryption payload ready for sending to Ravelin
 | nameOnCard     | String     | The customer name on the card |
 | error     | Object     | Passed as reference |
 
-### Return value
+**Return value**
 
-> Dictionary containing methodType, aesKeyCiphertext, cardCiphertext, algorithm, keyIndex and ravelinSDKVersion
+Dictionary containing methodType, aesKeyCiphertext, cardCiphertext, algorithm, keyIndex and ravelinSDKVersion
 
 --- 
 
-## RVNEncryption Class Properties
+### RVNEncryption Class Properties
 
 ---
 
-## rsaKey
+#### rsaKey
 
-> The public RSA key from your dashboard
+The public RSA key from your dashboard
 
 
 # License

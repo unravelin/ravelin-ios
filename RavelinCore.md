@@ -1,20 +1,23 @@
+# How to use RavelinCore
+
 ## Contents
 
-* [Installation](#installing-the-ravelin-mobile-sdk-via-cocoapods)
+* [Building and Installation](#building-and-installation)
 * [Usage](#usage)
 * [Examples](#end-to-end-example)
 * [Class Reference](#ravelin-class-reference)
 * [License](#license)
 
-## Building the SDK from source
+## Building and Installation
+### Building the SDK from source
 
 If you wish to build the framework from source, the source code repository uses Git LFS (large file storage) to store some files. Please install Git-LFS before cloning locally. Follow the instructions on the [Git LFS website](https://git-lfs.github.com/) to set LFS up.
 
-## Installing the Ravelin Mobile SDK via Cocoapods
+### Installing the Ravelin Mobile SDK via Cocoapods
 
 Add `pod 'RavelinCore'` to your PodFile then from the command line `pod install`
 
-## Installing the Ravelin Mobile SDK via Carthage
+### Installing the Ravelin Mobile SDK via Carthage
 
 Add the following line to your Cartfile
 
@@ -24,7 +27,7 @@ Then from the command line
 
 `carthage update`
 
-## Installing the Ravelin Mobile SDK (manually)
+### Installing the Ravelin Mobile SDK (manually)
 
 The Ravelin Mobile SDK is provided as a precompiled Cocoa Touch framework.
 
@@ -42,7 +45,7 @@ To manually install:
 
 Note: You can use RavelinCore and RavelinEncrypt independently, or you can use both together. RavelinCore provides fingerprinting and session tracking functionality, while RavelinEncrypt provides encryption only.
 
-## Preparing for the App Store
+### Preparing for the App Store
 
 - Ravelin’s encryption algorithm qualifies for exemption provided under category 5 part 2  - Information Security ECN 5X (5A002.a.a.1) of the BIS Export Administration Regulation as the primary function is “information security” and therefore no export compliance documentation is required in App Store Connect.
 
@@ -137,7 +140,7 @@ Ravelin.sharedInstance().methodName()
 let ravelin = Ravelin.sharedInstance()
 ```
 
-## Tracking Activity
+### Tracking Activity
 
 Using the Ravelin Mobile SDK, you can capture various built in events along with your own custom ones that can later be viewed in the Ravelin Dashboard. This can be very useful for analysts to gain additional context during an investigation. For example, if you can see that a user is going through unexpected parts of your customer journey at a set speed on a new device that could indicate suspicious activity. 
 
@@ -149,7 +152,7 @@ Using the Ravelin Mobile SDK, you can capture various built in events along with
 
 > `Ravelin.trackFingerprint:(NSDictionary *)eventProperties` – To be used at checkout to profile the users device.
 
-## Custom Events and Metadata
+### Custom Events and Metadata
 
 The track method can be used to log notable client-side events:
 
@@ -169,7 +172,7 @@ let meta = ["productId" : "213", "SIZE" : "M"]
 Ravelin.sharedInstance().track(pageTitle, eventName: eventName, eventProperties: meta)
 ```
 
-## Detecting paste events
+### Detecting paste events
 
 We can detect paste events using the UITextFieldDelegate method `shouldChangeCharactersInRange` in conjunction with the Ravelin `track` method to send a custom event.
 
@@ -212,16 +215,16 @@ func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange
 
 > __NOTE:__ Track events have overload methods with completion handlers and will accept nil values for `eventProperties`
 
-## Fingerprint location tracking
+### Fingerprint location tracking
 
-> For location tracking to be successful from within the Ravelin Mobile SDK, your application should ask for user permissions for location sharing. Please refer to the Apple documentation [here](https://developer.apple.com/documentation/corelocation) for more information on the subject.
+For location tracking to be successful from within the Ravelin Mobile SDK, your application should ask for user permissions for location sharing. Please refer to the Apple documentation [here](https://developer.apple.com/documentation/corelocation) for more information on the subject.
 
 
 ## End to end example
 
 What follows is a simple end-to-end example of using the Ravelin Framework within a View.
 
-> __NOTE:__ All Ravelin network methods are asynchronous. Completion blocks are provided so you can handle each request accordingly. The example code will not necessarily call each method sequentially and is for demonstration purposes only.
+__NOTE:__ All Ravelin network methods are asynchronous. Completion blocks are provided so you can handle each request accordingly. The example code will not necessarily call each method sequentially and is for demonstration purposes only.
 
 
 #### Objective-C
@@ -321,49 +324,50 @@ class ViewController: UIViewController {
 }
 ```
 
-# Ravelin Class Reference
+## Ravelin Class Reference
 
-## Ravelin Class Methods
+### Ravelin Class Methods
 
 ---
-## createInstance (apiKey)
+
+#### createInstance (apiKey)
 
 Create a singleton instance of the Ravelin SDK with your public API key (use this method to create an SDK instance for tracking purposes only)
 
-### Parameters
+**Parameters**
 
 | Parameter     | Type               | Description  |
 | ------------- |---------------------|-------|
 | apiKey     | String     | The public api key from your Ravelin dashboard |
 
-### Return value
+**Return value**
 
-> The singleton instance of the class
+ The singleton instance of the class
 
 ---
 
-## sharedInstance
+#### sharedInstance
 
 Get the instantiated Ravelin singleton
 
 
-### Return value
+**Return value**
 
-> The singleton instance of the class
+ The singleton instance of the class
 
 ---
 
-## trackFingerprint
+#### trackFingerprint
 
 Fingerprints the device and sends results to Ravelin
 
 ---
 
-## trackFingerprint (completionHandler)
+#### trackFingerprint (completionHandler)
 
 Fingerprints the device and sends results to Ravelin
 
-### Parameters
+**Parameters**
 
 | Parameter     | Type               | Description  |
 | ------------- |---------------------|-------|
@@ -371,11 +375,11 @@ Fingerprints the device and sends results to Ravelin
 
 ---
 
-## trackFingerprint(customerId, completionHandler)
+#### trackFingerprint(customerId, completionHandler)
 
 Sets a customerId if one has not already been set and sends a fingerprint to Ravelin
 
-### Parameters
+**Parameters**
 
 | Parameter     | Type               | Description  |
 | ------------- |---------------------|-------|
@@ -384,17 +388,17 @@ Sets a customerId if one has not already been set and sends a fingerprint to Rav
 
 ---
 
-### Return value
+**Return value**
 
-> Dictionary containing the complete payload to send
+Dictionary containing the complete payload to send
 
 ---
 
-## track (pageTitle, eventName, eventProperties)
+#### track (pageTitle, eventName, eventProperties)
 
 Sends a track event to Ravelin. Use this method to send custom events and data to analyse in your dashboard.
 
-### Parameters
+**Parameters**
 
 | Parameter           | Type            | Description  |
 | --------------------|-----------------|----------------------------|
@@ -402,90 +406,87 @@ Sends a track event to Ravelin. Use this method to send custom events and data t
 | eventName           | String          | The name of the event |
 | eventProperties     | Dictionary      | A dictionary of meta data to send with the event |
 
-> Also available with a completion handler: track (pageTitle, eventName, eventProperties, completionHandler)
+Also available with a completion handler: track (pageTitle, eventName, eventProperties, completionHandler)
 
 ---
 
-## trackPage (pageTitle, eventProperties)
+#### trackPage (pageTitle, eventProperties)
 
 Sends a track page event to Ravelin.
 
-### Parameters
+**Parameters**
 
 | Parameter           | Type            | Description  |
 | --------------------|-----------------|----------------------------|
 | pageTitle           | String          | The title of the current page |
 | eventProperties     | Dictionary      | A dictionary of meta data to send with the event |
 
-> Also available with a completion handler: trackPage (pageTitle, eventProperties, completionHandler)
-
+Also available with a completion handler: trackPage (pageTitle, eventProperties, completionHandler)
 
 ---
 
-
-## trackLogin (pageTitle, eventProperties)
+#### trackLogin (pageTitle, eventProperties)
 
 Sends a track login event to Ravelin
 
-### Parameters
+**Parameters**
 
 | Parameter           | Type            | Description  |
 | --------------------|-----------------|----------------------------|
 | pageTitle           | String          | The title of the current page |
 | eventProperties     | Dictionary      | A dictionary of meta data to send with the event |
 
-> Also available with a completion handler: trackLogin (pageTitle, eventProperties, completionHandler)
-
+Also available with a completion handler: trackLogin (pageTitle, eventProperties, completionHandler)
 
 ---
 
-## trackLogout (pageTitle, eventProperties)
+#### trackLogout (pageTitle, eventProperties)
 
 Ends current Ravelin session and sends logout event to Ravelin
 
-### Parameters
+**Parameters**
 
 | Parameter           | Type            | Description  |
 | --------------------|-----------------|----------------------------|
 | pageTitle           | String          | The title of the current page |
 | eventProperties     | Dictionary      | A dictionary of meta data to send with the event |
 
-> Also available with a completion handler: trackLogout (pageTitle, eventProperties, completionHandler)
+Also available with a completion handler: trackLogout (pageTitle, eventProperties, completionHandler)
 
 ---
 
-## Ravelin Class Properties
+### Ravelin Class Properties
 
 ---
 
-## apiKey
+#### apiKey
 
-> The public api key from your dashboard 
-
-
-## customerId
-
-> Your chosen customer id 
+The public api key from your dashboard 
 
 
-## tempCustomerId
+#### customerId
 
-> Temp customer id  
-
-
-## sessionId (read only)
-
-> The Ravelin generated sessionId
+Your chosen customer id 
 
 
-## deviceId (read only)
+#### tempCustomerId
 
-> The Ravelin generated device id 
+Temp customer id  
 
 
-## orderId
+#### sessionId (read only)
 
-> Your chosen order id
+The Ravelin generated sessionId
+
+
+#### deviceId (read only)
+
+The Ravelin generated device id 
+
+
+#### orderId
+
+ Your chosen order id
 
 --- 
 
