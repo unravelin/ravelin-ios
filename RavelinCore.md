@@ -2,7 +2,7 @@
 
 ## Contents
 
-* [Building And Installation](#building-and-installation)
+* [Building and Installation](#building-and-installation)
 * [Usage](#usage)
 * [Examples](#end-to-end-example)
 * [Class Reference](#ravelin-class-reference)
