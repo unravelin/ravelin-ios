@@ -1,1 +1,1 @@
-4d75b43f8f26aff356dd504e35bf87734509f67e4c2bba7b3b4a72228ffb8e64  RavelinEncrypt.framework.zip
+3db5878a2baf34729bfa0f3d10d1b379cdf59eccd916eff76e3e4e99e4fc5cea  RavelinEncrypt.framework.zip
