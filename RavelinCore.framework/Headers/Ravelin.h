@@ -167,4 +167,153 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface Ravelin (SessionEvents)
+
+/**
+Sends a track search event to Ravelin
+ @param pageTitle The title of the current page
+ @param searchValue The searched term
+ */
+- (void)trackSearch:(NSString* _Nullable)pageTitle searchValue:(NSString* _Nullable)searchValue;
+
+/**
+ Sends a track search event to Ravelin
+ @param pageTitle The title of the current page
+ @param searchValue The searched term
+ @param completionHandler Completion block to handle response
+ */
+- (void)trackSearch:(NSString* _Nullable)pageTitle
+        searchValue:(NSString* _Nullable)searchValue
+  completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
+
+/**
+Sends a track selected option event to Ravelin
+ @param pageTitle The title of the current page
+ @param option The name of the option
+ @param optionValue the value of the option
+ */
+- (void)trackSelectOption:(NSString* _Nullable)pageTitle
+                   option:(NSString* _Nullable)option
+              optionValue:(NSString* _Nullable)optionValue;
+
+/**
+Sends a track selected option event to Ravelin
+ @param pageTitle The title of the current page
+ @param option The name of the option
+ @param optionValue the value of the option
+ @param completionHandler Completion block to handle response
+ */
+- (void)trackSelectOption:(NSString* _Nullable)pageTitle
+                   option:(NSString* _Nullable)option
+              optionValue:(NSString* _Nullable)optionValue
+        completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
+
+/**
+ Sends a track add to cart event to Ravelin
+ @param pageTitle The title of the current page
+ @param itemName Name of the item
+ @param quantity Quantity of the item
+ */
+- (void)trackAddToCart:(NSString* _Nullable)pageTitle
+              itemName:(NSString* _Nullable)itemName
+              quantity:(NSNumber* _Nullable)quantity
+NS_SWIFT_NAME(trackAddToCart(pageTitle:itemName:quantity:));
+
+/**
+ Sends a track add to cart event to Ravelin
+ @param pageTitle The title of the current page
+ @param itemName Name of the item
+ @param quantity Quantity of the item
+ @param completionHandler Completion block to handle response
+ */
+- (void)trackAddToCart:(NSString* _Nullable)pageTitle
+              itemName:(NSString* _Nullable)itemName
+              quantity:(NSNumber* _Nullable)quantity
+     completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler
+ NS_SWIFT_NAME(trackAddToCart(pageTitle:itemName:quantity:completionHandler:));
+
+/**
+ Sends a track remove from cart event to Ravelin
+ @param pageTitle The title of the current page
+ @param itemName Name of the item
+ @param quantity Quantity of the item
+ */
+- (void)trackRemoveFromCart:(NSString* _Nullable)pageTitle
+                   itemName:(NSString* _Nullable)itemName
+                   quantity:(NSNumber* _Nullable)quantity
+NS_SWIFT_NAME(trackRemoveFromCart(pageTitle:itemName:quantity:));
+
+/**
+ Sends a track remove from cart event to Ravelin
+ @param pageTitle The title of the current page
+ @param itemName Name of the item
+ @param quantity Quantity of the item
+ @param completionHandler Completion block to handle response
+ */
+- (void)trackRemoveFromCart:(NSString* _Nullable)pageTitle
+                   itemName:(NSString* _Nullable)itemName
+                   quantity:(NSNumber* _Nullable)quantity
+          completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler
+ NS_SWIFT_NAME(trackRemoveFromCart(pageTitle:itemName:quantity:completionHandler:));
+
+/**
+ Sends a track add to wishlist event to Ravelin
+ @param pageTitle The title of the current page
+ @param itemName Name of the item
+ */
+- (void)trackAddToWishlist:(NSString* _Nullable)pageTitle
+                  itemName:(NSString* _Nullable)itemName
+ NS_SWIFT_NAME(trackAddToWishlist(pageTitle:itemName:));
+
+/**
+ Sends a track add to wishlist event to Ravelin
+ @param pageTitle The title of the current page
+ @param itemName Name of the item
+ @param completionHandler Completion block to handle response
+ */
+- (void)trackAddToWishlist:(NSString* _Nullable)pageTitle
+                  itemName:(NSString* _Nullable)itemName
+         completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler
+NS_SWIFT_NAME(trackAddToWishlist(pageTitle:itemName:completionHandler:));
+
+/**
+ Sends a track remove from wishlist event to Ravelin
+ @param pageTitle The title of the current page
+ @param itemName Name of the item
+ */
+- (void)trackRemoveFromWishlist:(NSString* _Nullable)pageTitle
+                       itemName:(NSString* _Nullable)itemName
+NS_SWIFT_NAME(trackRemoveFromWishlist(pageTitle:itemName:));
+
+/**
+ Sends a track remove from wishlist event to Ravelin
+ @param pageTitle The title of the current page
+ @param itemName Name of the item
+ @param completionHandler Completion block to handle response
+ */
+- (void)trackRemoveFromWishlist:(NSString* _Nullable)pageTitle
+                       itemName:(NSString* _Nullable)itemName
+              completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler
+NS_SWIFT_NAME(trackRemoveFromWishlist(pageTitle:itemName:completionHandler:));
+
+/**
+Sends a track view content event to Ravelin
+ @param pageTitle The title of the current page
+ @param contentType The type of the content
+ */
+- (void)trackViewContent:(NSString* _Nullable)pageTitle
+             contentType:(NSString* _Nullable)contentType;
+
+/**
+Sends a track view content event to Ravelin
+ @param pageTitle The title of the current page
+ @param contentType The type of the content
+ @param completionHandler Completion block to handle response
+ */
+- (void)trackViewContent:(NSString* _Nullable)pageTitle
+             contentType:(NSString* _Nullable)contentType
+       completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
+
+@end
+
 NS_ASSUME_NONNULL_END
