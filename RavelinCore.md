@@ -152,6 +152,29 @@ Using the Ravelin Mobile SDK, you can capture various built in events along with
 
 > `Ravelin.trackFingerprint:(NSDictionary *)eventProperties` – To be used at checkout to profile the users device.
 
+> `Ravelin.trackSearch:(NSString* _Nullable)pageTitle searchValue:(NSString* _Nullable)searchValue;` - track a _search_ event, with the search term.
+
+> `Ravelin.trackSelectOption:(NSString* _Nullable)pageTitle
+                      option:(NSString* _Nullable)option
+                 optionValue:(NSString* _Nullable)optionValue;` - track an _option selected_ event, with the option value.
+
+> `Ravelin.trackAddToCart:(NSString* _Nullable)pageTitle
+                 itemName:(NSString* _Nullable)itemName
+                 quantity:(NSNumber* _Nullable)quantity;` - track an _add to cart_ event, with the item name and quantity.
+
+> `Ravelin.trackRemoveFromCart:(NSString* _Nullable)pageTitle
+                      itemName:(NSString* _Nullable)itemName
+                      quantity:(NSNumber* _Nullable)quantity;` - track a _remove from cart_ event, with the item name and quantity.
+
+> `Ravelin.trackAddToWishlist:(NSString* _Nullable)pageTitle
+                     itemName:(NSString* _Nullable)itemName;` - track an _add to wishlist_ event, with the item name.
+
+> `Ravelin.trackRemoveFromWishlist:(NSString* _Nullable)pageTitle
+                          itemName:(NSString* _Nullable)itemName;` - track a _remove from wishlist_ event, with the item name.
+
+> `Ravelin.trackViewContent:(NSString* _Nullable)pageTitle
+                contentType:(NSString* _Nullable)contentType;` - track a _view content_ event, with the content type.
+
 ### Custom Events and Metadata
 
 The track method can be used to log notable client-side events:
@@ -452,6 +475,114 @@ Ends current Ravelin session and sends logout event to Ravelin
 | eventProperties     | Dictionary      | A dictionary of meta data to send with the event |
 
 Also available with a completion handler: trackLogout (pageTitle, eventProperties, completionHandler)
+
+---
+
+#### trackSearch (pageTitle, searchValue)
+
+Sends a track search event to Ravelin
+
+**Parameters**
+
+| Parameter           | Type            | Description  |
+| --------------------|-----------------|----------------------------|
+| pageTitle           | String          | The title of the current page |
+| searchValue         | String          | The searched term |
+
+Also available with a completion handler: trackSearch (pageTitle, searchValue, completionHandler)
+
+---
+
+#### trackSelectOption (pageTitle, option, optionValue)
+
+Sends a track selected option event to Ravelin
+
+**Parameters**
+
+| Parameter           | Type            | Description  |
+| --------------------|-----------------|----------------------------|
+| pageTitle           | String          | The title of the current page |
+| option              | String          | The name of the option |
+| optionValue         | String          | The value of the option |
+
+Also available with a completion handler: trackSelectOption (pageTitle, option, optionValue, completionHandler)
+
+---
+
+#### trackAddToCart (pageTitle, itemName, quantity)
+
+Sends a track add to cart event to Ravelin
+
+**Parameters**
+
+| Parameter           | Type            | Description  |
+| --------------------|-----------------|----------------------------|
+| pageTitle           | String          | The title of the current page |
+| itemName            | String          | The name of the item |
+| quantity            | NSNumber        | The quantity of the item |
+
+Also available with a completion handler: trackAddToCart (pageTitle, itemName, quantity, completionHandler)
+
+---
+
+#### trackRemoveFromCart (pageTitle, itemName, quantity)
+
+Sends a track remove from cart event to Ravelin
+
+**Parameters**
+
+| Parameter           | Type            | Description  |
+| --------------------|-----------------|----------------------------|
+| pageTitle           | String          | The title of the current page |
+| itemName            | String          | The name of the item |
+| quantity            | NSNumber        | The quantity of the item |
+
+Also available with a completion handler: trackRemoveFromCart (pageTitle, itemName, quantity, completionHandler)
+
+---
+
+#### trackAddToWishlist (pageTitle, itemName)
+
+Sends a track add to wishlist event to Ravelin
+
+**Parameters**
+
+| Parameter           | Type            | Description  |
+| --------------------|-----------------|----------------------------|
+| pageTitle           | String          | The title of the current page |
+| itemName            | String          | The name of the item |
+
+Also available with a completion handler: trackAddToWishlist (pageTitle, itemName, completionHandler)
+
+---
+
+#### trackRemoveFromWishlist (pageTitle, itemName)
+
+Sends a track remove from wishlist event to Ravelin
+
+**Parameters**
+
+| Parameter           | Type            | Description  |
+| --------------------|-----------------|----------------------------|
+| pageTitle           | String          | The title of the current page |
+| itemName            | String          | The name of the item |
+
+Also available with a completion handler: trackRemoveFromWishlist (pageTitle, itemName, completionHandler)
+
+---
+
+#### trackViewContent (pageTitle, contentType)
+
+Sends a track content type event to Ravelin
+
+**Parameters**
+
+| Parameter           | Type            | Description  |
+| --------------------|-----------------|----------------------------|
+| pageTitle           | String          | The title of the current page |
+| contentType         | String          | The type of the content |
+
+Also available with a completion handler: trackViewContent (pageTitle, contentType, completionHandler)
 
 ---
 
