@@ -1,0 +1,515 @@
+BCSymbolMap Version: 2.0
+-[RVNFetchAllEvents execute]
+___Block_byref_object_copy_
+___Block_byref_object_dispose_
+___28-[RVNFetchAllEvents execute]_block_invoke
+___copy_helper_block_e4_20s24r28r
+___destroy_helper_block_e4_20s24r28r
+-[RVNFetchAllEvents logError:]
+___block_descriptor_32_e4_20s24r28r_e5_v4?0l
+Apple clang version 11.0.0 (clang-1100.0.33.8)
+/Users/distiller/project/RavelinCore/Retry/Persistence/Event/FetchAll/RVNFetchAllEvents.m
+/Users/distiller/project
+RavelinCore/Retry/Persistence/Event/FetchAll/RVNFetchAllEvents.m
+__destroy_helper_block_e4_20s24r28r
+__copy_helper_block_e4_20s24r28r
+__28-[RVNFetchAllEvents execute]_block_invoke
+__Block_byref_object_dispose_
+__Block_byref_object_copy_
+/Users/distiller/project/RavelinCore/Utils/RVNCoreConstants.m
++[Ravelin createInstance:]
++[Ravelin createInstance:rsaKey:]
++[Ravelin sharedInstance]
+___25+[Ravelin sharedInstance]_block_invoke
+___copy_helper_block_e4_
+___destroy_helper_block_e4_
+-[Ravelin init]
+-[Ravelin newSession]
+-[Ravelin initializeRetryQueues]
+-[Ravelin initializeEventRetryQueue]
+-[Ravelin initializeErrorRetryQueue]
+-[Ravelin subscribeToNotifications]
+-[Ravelin getDeviceId]
+-[Ravelin trackEventWithUrl:eventName:payload:eventID:errorRetryHandler:statusRetryHandler:completionHandler:]
+___110-[Ravelin trackEventWithUrl:eventName:payload:eventID:errorRetryHandler:statusRetryHandler:completionHandler:]_block_invoke
+___copy_helper_block_e4_20b24s28s32b36s40b44w
+___destroy_helper_block_e4_20s24s28s32s36s40s44w
+-[Ravelin trackError:completionHandler:]
+___40-[Ravelin trackError:completionHandler:]_block_invoke
+___copy_helper_block_e4_20s24w
+___destroy_helper_block_e4_20s24w
+___40-[Ravelin trackError:completionHandler:]_block_invoke.119
+-[Ravelin trackFingerprint]
+-[Ravelin trackFingerprint:]
+-[Ravelin trackFingerprint:completionHandler:]
+-[Ravelin trackFingerprintWithProperties:eventID:]
+-[Ravelin trackFingerprintWithProperties:eventID:completionHandler:]
+___68-[Ravelin trackFingerprintWithProperties:eventID:completionHandler:]_block_invoke
+___copy_helper_block_e4_20s24s28w
+___destroy_helper_block_e4_20s24s28w
+___68-[Ravelin trackFingerprintWithProperties:eventID:completionHandler:]_block_invoke.135
+-[Ravelin generateFingerprintPayload]
+-[Ravelin checkToken]
+-[Ravelin checkToken:]
+-[Ravelin track:eventName:eventProperties:]
+___43-[Ravelin track:eventName:eventProperties:]_block_invoke
+-[Ravelin track:eventName:eventProperties:completionHandler:]
+-[Ravelin track:eventName:eventProperties:eventID:completionHandler:]
+___69-[Ravelin track:eventName:eventProperties:eventID:completionHandler:]_block_invoke
+___copy_helper_block_e4_20s24s28s32s36w
+___destroy_helper_block_e4_20s24s28s32s36w
+___69-[Ravelin track:eventName:eventProperties:eventID:completionHandler:]_block_invoke.188
+-[Ravelin trackLogin:]
+-[Ravelin trackLogin:eventProperties:]
+-[Ravelin trackLogin:eventProperties:completionHandler:]
+-[Ravelin trackLogout:]
+-[Ravelin trackLogout:eventProperties:]
+-[Ravelin trackLogout:eventProperties:completionHandler:]
+-[Ravelin trackPage:]
+-[Ravelin trackPage:eventProperties:]
+-[Ravelin trackPage:eventProperties:completionHandler:]
+-[Ravelin trackPayload:eventType:eventName:eventProperties:]
+-[Ravelin isEmpty:]
+-[Ravelin applicationDidEnterBackground:]
+-[Ravelin applicationDidBecomeActive:]
+-[Ravelin logResponseData:eventName:]
+-[Ravelin logRequestError:eventName:]
+-[Ravelin logSerializationError:eventName:]
+-[Ravelin logRequestException:eventName:]
+-[Ravelin logUnsuccessfulResponse:eventName:]
+-[Ravelin errorTypeForStatusCode:]
+-[Ravelin enqueueFingerprintEventWithProperties:errorType:eventID:]
+-[Ravelin enqueueCustomEventWithName:errorType:title:properties:eventID:]
+-[Ravelin enqueueEventForRetryWithType:name:errorType:title:eventID:]
+-[Ravelin enqueueErrorEventWithProperties:]
+-[Ravelin enqueueEventForRetryWithType:name:errorType:title:properties:eventID:]
+-[Ravelin handleErrorReport:]
+-[Ravelin dealloc]
+-[Ravelin apiKey]
+-[Ravelin setApiKey:]
+-[Ravelin customerId]
+-[Ravelin setCustomerId:]
+-[Ravelin tempCustomerId]
+-[Ravelin setTempCustomerId:]
+-[Ravelin sessionId]
+-[Ravelin orderId]
+-[Ravelin setOrderId:]
+-[Ravelin eventStore]
+-[Ravelin setEventStore:]
+-[Ravelin errorStore]
+-[Ravelin setErrorStore:]
+-[Ravelin eventRetryQueue]
+-[Ravelin setEventRetryQueue:]
+-[Ravelin errorRetryQueue]
+-[Ravelin setErrorRetryQueue:]
+-[Ravelin retryStatusChecker]
+-[Ravelin setRetryStatusChecker:]
+-[Ravelin payloadEnhancer]
+-[Ravelin setPayloadEnhancer:]
+-[Ravelin .cxx_destruct]
+_sharedInstance.once
+_sharedInstance.sharedInstance
+___block_descriptor_24_e4__e5_v4?0l
+___block_descriptor_48_e4_20bs24s28s32bs36s40bs44w_e45_v16?0"NSData"4"NSURLResponse"8"NSError"12l
+___block_descriptor_28_e4_20s24w_e5_v4?0l
+___block_descriptor_28_e4_20s24w_e7_v8?0I4l
+___block_descriptor_32_e4_20s24s28w_e5_v4?0l
+___block_descriptor_32_e4_20s24s28w_e7_v8?0I4l
+___block_descriptor_20_e45_v16?0"NSData"4"NSURLResponse"8"NSError"12l
+___block_literal_global
+___block_descriptor_40_e4_20s24s28s32s36w_e5_v4?0l
+___block_descriptor_40_e4_20s24s28s32s36w_e7_v8?0I4l
+_OBJC_IVAR_$_Ravelin._apiKey
+_OBJC_IVAR_$_Ravelin._customerId
+_OBJC_IVAR_$_Ravelin._tempCustomerId
+_OBJC_IVAR_$_Ravelin._sessionId
+_OBJC_IVAR_$_Ravelin._orderId
+_OBJC_IVAR_$_Ravelin._eventStore
+_OBJC_IVAR_$_Ravelin._errorStore
+_OBJC_IVAR_$_Ravelin._eventRetryQueue
+_OBJC_IVAR_$_Ravelin._errorRetryQueue
+_OBJC_IVAR_$_Ravelin._retryStatusChecker
+_OBJC_IVAR_$_Ravelin._payloadEnhancer
+/Users/distiller/project/RavelinCore/Ravelin.m
+RavelinCore/Ravelin.m
+RavelinCore/Ravelin+Internal.h
+RavelinCore/Ravelin.h
+__69-[Ravelin track:eventName:eventProperties:eventID:completionHandler:]_block_invoke.188
+__destroy_helper_block_e4_20s24s28s32s36w
+__copy_helper_block_e4_20s24s28s32s36w
+__69-[Ravelin track:eventName:eventProperties:eventID:completionHandler:]_block_invoke
+__43-[Ravelin track:eventName:eventProperties:]_block_invoke
+__68-[Ravelin trackFingerprintWithProperties:eventID:completionHandler:]_block_invoke.135
+__destroy_helper_block_e4_20s24s28w
+__copy_helper_block_e4_20s24s28w
+__68-[Ravelin trackFingerprintWithProperties:eventID:completionHandler:]_block_invoke
+__40-[Ravelin trackError:completionHandler:]_block_invoke.119
+__destroy_helper_block_e4_20s24w
+__copy_helper_block_e4_20s24w
+__40-[Ravelin trackError:completionHandler:]_block_invoke
+__destroy_helper_block_e4_20s24s28s32s36s40s44w
+__copy_helper_block_e4_20b24s28s32b36s40b44w
+__110-[Ravelin trackEventWithUrl:eventName:payload:eventID:errorRetryHandler:statusRetryHandler:completionHandler:]_block_invoke
+__destroy_helper_block_e4_
+__copy_helper_block_e4_
+__25+[Ravelin sharedInstance]_block_invoke
+/Applications/Xcode-11.GM.Seed.2.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk/usr/include/dispatch/once.h
+-[RVNRetryEventStoreCompleteOperation initWithStore:event:]
+-[RVNRetryEventStoreCompleteOperation store]
+-[RVNRetryEventStoreCompleteOperation setStore:]
+-[RVNRetryEventStoreCompleteOperation event]
+-[RVNRetryEventStoreCompleteOperation setEvent:]
+-[RVNRetryEventStoreCompleteOperation .cxx_destruct]
+_OBJC_IVAR_$_RVNRetryEventStoreCompleteOperation._store
+_OBJC_IVAR_$_RVNRetryEventStoreCompleteOperation._event
+/Users/distiller/project/RavelinCore/Retry/Persistence/Event/Operation/RVNRetryEventStoreCompleteOperation.m
+RavelinCore/Retry/Persistence/Event/Operation/RVNRetryEventStoreCompleteOperation.m
+RavelinCore/Retry/Persistence/Event/Operation/RVNRetryEventStoreCompleteOperation.h
++[RVNErrorReporter reportError:fileName:functionName:line:]
+/Users/distiller/project/RavelinCore/Utils/RVNErrorReporter.m
+RavelinCore/Utils/RVNErrorReporter.m
+-[RVNTrackAction initWithTracker:retryStatusChecker:]
+-[RVNTrackAction ravelin]
+-[RVNTrackAction setRavelin:]
+-[RVNTrackAction retryStatusChecker]
+-[RVNTrackAction setRetryStatusChecker:]
+-[RVNTrackAction .cxx_destruct]
+_OBJC_IVAR_$_RVNTrackAction._ravelin
+_OBJC_IVAR_$_RVNTrackAction._retryStatusChecker
+/Users/distiller/project/RavelinCore/Retry/Action/RVNTrackAction.m
+RavelinCore/Retry/Action/RVNTrackAction.m
+RavelinCore/Retry/Action/RVNTrackAction.h
+-[RVNRetryEventAction retry:completionHandler:]
+-[RVNRetryEventAction retryFingerprintEvent:completionHandler:]
+___63-[RVNRetryEventAction retryFingerprintEvent:completionHandler:]_block_invoke
+___copy_helper_block_e4_20b
+___destroy_helper_block_e4_20s
+-[RVNRetryEventAction retryCustomEvent:completionHandler:]
+___58-[RVNRetryEventAction retryCustomEvent:completionHandler:]_block_invoke
+___block_descriptor_24_e4_20bs_e45_v16?0"NSData"4"NSURLResponse"8"NSError"12l
+__OBJC_PROTOCOL_$_NSObject
+__OBJC_LABEL_PROTOCOL_$_NSObject
+__OBJC_PROTOCOL_$_RVNRetryAction
+__OBJC_LABEL_PROTOCOL_$_RVNRetryAction
+/Users/distiller/project/RavelinCore/Retry/Action/RVNRetryEventAction.m
+__58-[RVNRetryEventAction retryCustomEvent:completionHandler:]_block_invoke
+RavelinCore/Retry/Action/RVNRetryEventAction.m
+__destroy_helper_block_e4_20s
+__copy_helper_block_e4_20b
+__63-[RVNRetryEventAction retryFingerprintEvent:completionHandler:]_block_invoke
++[RVNEventMO(CoreDataProperties) fetchRequest]
+/Users/distiller/project/RavelinCore/Retry/Persistence/Event/Model/RVNEventMO+CoreDataProperties.m
+RavelinCore/Retry/Persistence/Event/Model/RVNEventMO+CoreDataProperties.m
+/Users/distiller/project/RavelinCore/Utils/RVNJsonConstants.m
++[RVNDevice getModel]
++[RVNDevice getOSVersion]
++[RVNDevice getOrientation]
++[RVNDevice getIPAddress]
++[RVNDevice getCarrierInfo]
++[RVNDevice getDeviceLanguage]
++[RVNDevice getAppLanguage]
++[RVNDevice getDeviceFonts]
++[RVNDevice getLocation]
++[RVNDevice isSimulator]
++[RVNDevice isJailBroken]
+/Users/distiller/project/RavelinCore/Fingerprinting/RVNDevice.m
+RavelinCore/Fingerprinting/RVNDevice.m
+-[RVNFindEvent initWithStore:eventID:]
+-[RVNFindEvent execute]
+___23-[RVNFindEvent execute]_block_invoke
+___copy_helper_block_e4_20s24s28r32r
+___destroy_helper_block_e4_20s24s28r32r
+-[RVNFindEvent logError:]
+-[RVNFindEvent store]
+-[RVNFindEvent setStore:]
+-[RVNFindEvent eventID]
+-[RVNFindEvent setEventID:]
+-[RVNFindEvent .cxx_destruct]
+___block_descriptor_36_e4_20s24s28r32r_e5_v4?0l
+_OBJC_IVAR_$_RVNFindEvent._store
+_OBJC_IVAR_$_RVNFindEvent._eventID
+/Users/distiller/project/RavelinCore/Retry/Persistence/Event/Find/RVNFindEvent.m
+RavelinCore/Retry/Persistence/Event/Find/RVNFindEvent.m
+RavelinCore/Retry/Persistence/Event/Find/RVNFindEvent.h
+__destroy_helper_block_e4_20s24s28r32r
+__copy_helper_block_e4_20s24s28r32r
+__23-[RVNFindEvent execute]_block_invoke
++[RVNCoreSDKVersion getSDKVersion]
+/Users/distiller/project/RavelinCore/Utils/RVNCoreSDKVersion.m
+RavelinCore/Utils/RVNCoreSDKVersion.m
+-[Ravelin(SessionEvents) trackSearch:searchValue:]
+-[Ravelin(SessionEvents) trackSearch:searchValue:completionHandler:]
+-[Ravelin(SessionEvents) trackSelectOption:option:optionValue:]
+-[Ravelin(SessionEvents) trackSelectOption:option:optionValue:completionHandler:]
+-[Ravelin(SessionEvents) trackAddToCart:itemName:quantity:]
+-[Ravelin(SessionEvents) trackAddToCart:itemName:quantity:completionHandler:]
+-[Ravelin(SessionEvents) trackRemoveFromCart:itemName:quantity:]
+-[Ravelin(SessionEvents) trackRemoveFromCart:itemName:quantity:completionHandler:]
+-[Ravelin(SessionEvents) trackAddToWishlist:itemName:]
+-[Ravelin(SessionEvents) trackAddToWishlist:itemName:completionHandler:]
+-[Ravelin(SessionEvents) trackRemoveFromWishlist:itemName:]
+-[Ravelin(SessionEvents) trackRemoveFromWishlist:itemName:completionHandler:]
+-[Ravelin(SessionEvents) trackViewContent:contentType:]
+-[Ravelin(SessionEvents) trackViewContent:contentType:completionHandler:]
+/Users/distiller/project/RavelinCore/Ravelin+SessionEvents.m
+RavelinCore/Ravelin+SessionEvents.m
++[RVNFingerprint generateFingerprint]
++[RVNFingerprint getDeviceSimulatorAndJailbreakProperties]
+/Users/distiller/project/RavelinCore/Fingerprinting/RVNFingerprint.m
+RavelinCore/Fingerprinting/RVNFingerprint.m
+-[RVNRetryErrorAction retry:completionHandler:]
+___47-[RVNRetryErrorAction retry:completionHandler:]_block_invoke
+___copy_helper_block_e4_20b24w
+-[RVNRetryErrorAction errorPayloadForEvent:]
+-[RVNRetryErrorAction getTimestampBasedOnProperties:]
+___block_descriptor_28_e4_20bs24w_e45_v16?0"NSData"4"NSURLResponse"8"NSError"12l
+/Users/distiller/project/RavelinCore/Retry/Action/RVNRetryErrorAction.m
+RavelinCore/Retry/Action/RVNRetryErrorAction.m
+__copy_helper_block_e4_20b24w
+__47-[RVNRetryErrorAction retry:completionHandler:]_block_invoke
+-[RVNAddEvent execute]
+___22-[RVNAddEvent execute]_block_invoke
+___copy_helper_block_e4_20s24s
+___destroy_helper_block_e4_20s24s
+___block_descriptor_28_e4_20s24s_e5_v4?0l
+/Users/distiller/project/RavelinCore/Retry/Persistence/Event/Add/RVNAddEvent.m
+__destroy_helper_block_e4_20s24s
+__copy_helper_block_e4_20s24s
+__22-[RVNAddEvent execute]_block_invoke
+RavelinCore/Retry/Persistence/Event/Add/RVNAddEvent.m
+-[RVNRetryConfiguration initWithInitialTimeInSeconds:retryTimeLimitInSeconds:identifier:]
+-[RVNRetryConfiguration initialTimeInSeconds]
+-[RVNRetryConfiguration setInitialTimeInSeconds:]
+-[RVNRetryConfiguration retryTimeLimitInSeconds]
+-[RVNRetryConfiguration setRetryTimeLimitInSeconds:]
+-[RVNRetryConfiguration identifier]
+-[RVNRetryConfiguration setIdentifier:]
+-[RVNRetryConfiguration .cxx_destruct]
+_OBJC_IVAR_$_RVNRetryConfiguration._identifier
+_OBJC_IVAR_$_RVNRetryConfiguration._initialTimeInSeconds
+_OBJC_IVAR_$_RVNRetryConfiguration._retryTimeLimitInSeconds
+/Users/distiller/project/RavelinCore/Retry/Configuration/RVNRetryConfiguration.m
+RavelinCore/Retry/Configuration/RVNRetryConfiguration.m
+RavelinCore/Retry/Configuration/RVNRetryConfiguration.h
+-[RVNRetryEventStore initWithDatabaseName:]
+-[RVNRetryEventStore applicationDocumentsDirectory]
+-[RVNRetryEventStore saveContext]
+-[RVNRetryEventStore managedObjectContext]
+-[RVNRetryEventStore persistentStoreCoordinator]
+-[RVNRetryEventStore managedObjectModel]
+-[RVNRetryEventStore observeContextChanges]
+-[RVNRetryEventStore stopObservingContextChanges]
+-[RVNRetryEventStore handleContextChanges:]
+-[RVNRetryEventStore logEventStoreError:]
+-[RVNRetryEventStore dealloc]
+-[RVNRetryEventStore delegate]
+-[RVNRetryEventStore setDelegate:]
+-[RVNRetryEventStore setPersistentStoreCoordinator:]
+-[RVNRetryEventStore setManagedObjectModel:]
+-[RVNRetryEventStore databaseName]
+-[RVNRetryEventStore setDatabaseName:]
+-[RVNRetryEventStore .cxx_destruct]
+_OBJC_IVAR_$_RVNRetryEventStore._managedObjectContext
+_OBJC_IVAR_$_RVNRetryEventStore._delegate
+_OBJC_IVAR_$_RVNRetryEventStore._persistentStoreCoordinator
+_OBJC_IVAR_$_RVNRetryEventStore._managedObjectModel
+_OBJC_IVAR_$_RVNRetryEventStore._databaseName
+/Users/distiller/project/RavelinCore/Retry/Persistence/RVNRetryEventStore.m
+RavelinCore/Retry/Persistence/RVNRetryEventStore.m
+RavelinCore/Retry/Persistence/RVNRetryEventStore.h
+-[RVNRetryQueue initWithStore:configuration:retryOperation:]
+-[RVNRetryQueue add:]
+___21-[RVNRetryQueue add:]_block_invoke
+-[RVNRetryQueue pause]
+-[RVNRetryQueue resume]
+-[RVNRetryQueue startRetryingEvents]
+-[RVNRetryQueue scheduleNextRetry]
+___34-[RVNRetryQueue scheduleNextRetry]_block_invoke
+___copy_helper_block_e4_20w
+___destroy_helper_block_e4_20w
+___34-[RVNRetryQueue scheduleNextRetry]_block_invoke.64
+-[RVNRetryQueue fetchAllEvents]
+-[RVNRetryQueue retryEvent:]
+___28-[RVNRetryQueue retryEvent:]_block_invoke
+-[RVNRetryQueue increaseRetryTime]
+-[RVNRetryQueue restartRetryParameters]
+-[RVNRetryQueue handleEventInsertion]
+-[RVNRetryQueue logEvent:]
+-[RVNRetryQueue logNextRetryTime]
+-[RVNRetryQueue logRetryStarted]
+-[RVNRetryQueue logRetryQueueSuspended:]
+-[RVNRetryQueue queue]
+-[RVNRetryQueue setQueue:]
+-[RVNRetryQueue dispatchQueue]
+-[RVNRetryQueue setDispatchQueue:]
+-[RVNRetryQueue store]
+-[RVNRetryQueue setStore:]
+-[RVNRetryQueue configuration]
+-[RVNRetryQueue setConfiguration:]
+-[RVNRetryQueue retryAction]
+-[RVNRetryQueue setRetryAction:]
+-[RVNRetryQueue currentRetryTime]
+-[RVNRetryQueue setCurrentRetryTime:]
+-[RVNRetryQueue hasScheduledRetries]
+-[RVNRetryQueue setHasScheduledRetries:]
+-[RVNRetryQueue .cxx_destruct]
+___block_descriptor_24_e4_20w_e5_v4?0l
+___block_descriptor_28_e4_20bs24w_e5_v4?0l
+___block_descriptor_28_e4_20s24w_e7_v8?0c4l
+__OBJC_PROTOCOL_$_RVNRetryEventStoreDelegate
+__OBJC_LABEL_PROTOCOL_$_RVNRetryEventStoreDelegate
+_OBJC_IVAR_$_RVNRetryQueue._hasScheduledRetries
+_OBJC_IVAR_$_RVNRetryQueue._queue
+_OBJC_IVAR_$_RVNRetryQueue._dispatchQueue
+_OBJC_IVAR_$_RVNRetryQueue._store
+_OBJC_IVAR_$_RVNRetryQueue._configuration
+_OBJC_IVAR_$_RVNRetryQueue._retryAction
+_OBJC_IVAR_$_RVNRetryQueue._currentRetryTime
+/Users/distiller/project/RavelinCore/Retry/Queue/RVNRetryQueue.m
+RavelinCore/Retry/Queue/RVNRetryQueue.m
+__28-[RVNRetryQueue retryEvent:]_block_invoke
+__34-[RVNRetryQueue scheduleNextRetry]_block_invoke.64
+__destroy_helper_block_e4_20w
+__copy_helper_block_e4_20w
+__34-[RVNRetryQueue scheduleNextRetry]_block_invoke
+__21-[RVNRetryQueue add:]_block_invoke
+-[RVNEvent initWithType:errorType:properties:]
+-[RVNEvent initWithType:title:name:errorType:properties:]
+-[RVNEvent initWithId:type:title:name:errorType:properties:]
+-[RVNEvent type]
+-[RVNEvent setType:]
+-[RVNEvent id]
+-[RVNEvent setId:]
+-[RVNEvent title]
+-[RVNEvent setTitle:]
+-[RVNEvent name]
+-[RVNEvent setName:]
+-[RVNEvent properties]
+-[RVNEvent setProperties:]
+-[RVNEvent errorType]
+-[RVNEvent setErrorType:]
+-[RVNEvent .cxx_destruct]
+_OBJC_IVAR_$_RVNEvent._type
+_OBJC_IVAR_$_RVNEvent._id
+_OBJC_IVAR_$_RVNEvent._title
+_OBJC_IVAR_$_RVNEvent._name
+_OBJC_IVAR_$_RVNEvent._properties
+_OBJC_IVAR_$_RVNEvent._errorType
+/Users/distiller/project/RavelinCore/Retry/Model/RVNEvent.m
+RavelinCore/Retry/Model/RVNEvent.m
+RavelinCore/Retry/Model/RVNEvent.h
+NSStringFromRVNEventType
+-[RVNDeleteEvent execute]
+___25-[RVNDeleteEvent execute]_block_invoke
+___copy_helper_block_e4_20s24s28r
+___destroy_helper_block_e4_20s24s28r
+-[RVNDeleteEvent logError:]
+___block_descriptor_32_e4_20s24s28r_e5_v4?0l
+/Users/distiller/project/RavelinCore/Retry/Persistence/Event/Delete/RVNDeleteEvent.m
+RavelinCore/Retry/Persistence/Event/Delete/RVNDeleteEvent.m
+__destroy_helper_block_e4_20s24s28r
+__copy_helper_block_e4_20s24s28r
+__25-[RVNDeleteEvent execute]_block_invoke
+-[RVNPayloadEnhancer addTraceIDIfPresent:to:]
+-[RVNPayloadEnhancer addErrorDescription:to:]
+-[RVNPayloadEnhancer objectToAddSupportFieldsInPayload:]
+-[RVNPayloadEnhancer addErrorDescriptionForErrorType:from:to:]
+/Users/distiller/project/RavelinCore/Retry/Model/RVNPayloadEnhancer.m
+RavelinCore/Retry/Model/RVNPayloadEnhancer.m
+/Users/distiller/project/RavelinCore/Utils/RVNLog.m
+RVNLogDebug
+RavelinCore/Utils/RVNLog.m
+RVNLog
++[RVNKeychain passwordForService:account:]
++[RVNKeychain passwordForService:account:error:]
++[RVNKeychain passwordDataForService:account:]
++[RVNKeychain passwordDataForService:account:error:]
++[RVNKeychain deletePasswordForService:account:]
++[RVNKeychain deletePasswordForService:account:error:]
++[RVNKeychain setPassword:forService:account:]
++[RVNKeychain setPassword:forService:account:error:]
++[RVNKeychain setPasswordData:forService:account:]
++[RVNKeychain setPasswordData:forService:account:error:]
++[RVNKeychain allAccounts]
++[RVNKeychain allAccounts:]
++[RVNKeychain accountsForService:]
++[RVNKeychain accountsForService:error:]
++[RVNKeychain accessibilityType]
++[RVNKeychain setAccessibilityType:]
+_RVNKeychainAccessibilityType
+/Users/distiller/project/RavelinCore/Keychain/RVNKeychain.m
+RavelinCore/Keychain/RVNKeychain.m
+-[RVNHTTPRequest sendRequest:httpMethod:eventProperties:completionHandler:]
+-[RVNHTTPRequest checkToken]
+___28-[RVNHTTPRequest checkToken]_block_invoke
+-[RVNHTTPRequest checkToken:]
+-[RVNHTTPRequest configuredSession]
+/Users/distiller/project/RavelinCore/Networking/RVNHTTPRequest.m
+RavelinCore/Networking/RVNHTTPRequest.m
+__28-[RVNHTTPRequest checkToken]_block_invoke
+-[NSString(Ravelin) rvn_isHexString]
+-[NSString(Ravelin) rvn_stripNonNumericCharacters]
+/Users/distiller/project/Common/Categories/NSString+Ravelin.m
+Common/Categories/NSString+Ravelin.m
+/Users/distiller/project/RavelinCore/Retry/Persistence/Event/Model/RVNEventMO+CoreDataClass.m
++[RVNAuthentication generateUUID]
++[RVNAuthentication isValidUUID:]
++[RVNAuthentication saveDeviceID]
++[RVNAuthentication getDeviceID]
++[RVNAuthentication deleteDeviceID]
+/Users/distiller/project/RavelinCore/Authentication/RVNAuthentication.m
+RavelinCore/Authentication/RVNAuthentication.m
+-[RVNKeychainQuery save:]
+-[RVNKeychainQuery deleteItem:]
+-[RVNKeychainQuery fetchAll:]
+-[RVNKeychainQuery fetch:]
+-[RVNKeychainQuery setPasswordObject:]
+-[RVNKeychainQuery passwordObject]
+-[RVNKeychainQuery setPassword:]
+-[RVNKeychainQuery password]
++[RVNKeychainQuery isSynchronizationAvailable]
+-[RVNKeychainQuery query]
++[RVNKeychainQuery errorWithCode:]
+___34+[RVNKeychainQuery errorWithCode:]_block_invoke
+-[RVNKeychainQuery account]
+-[RVNKeychainQuery setAccount:]
+-[RVNKeychainQuery service]
+-[RVNKeychainQuery setService:]
+-[RVNKeychainQuery label]
+-[RVNKeychainQuery setLabel:]
+-[RVNKeychainQuery passwordData]
+-[RVNKeychainQuery setPasswordData:]
+-[RVNKeychainQuery accessGroup]
+-[RVNKeychainQuery setAccessGroup:]
+-[RVNKeychainQuery synchronizationMode]
+-[RVNKeychainQuery setSynchronizationMode:]
+-[RVNKeychainQuery .cxx_destruct]
+_errorWithCode:.onceToken
+_errorWithCode:.resourcesBundle
+___block_descriptor_20_e5_v4?0l
+_OBJC_IVAR_$_RVNKeychainQuery._account
+_OBJC_IVAR_$_RVNKeychainQuery._service
+_OBJC_IVAR_$_RVNKeychainQuery._label
+_OBJC_IVAR_$_RVNKeychainQuery._passwordData
+_OBJC_IVAR_$_RVNKeychainQuery._accessGroup
+_OBJC_IVAR_$_RVNKeychainQuery._synchronizationMode
+/Users/distiller/project/RavelinCore/Keychain/RVNKeychainQuery.m
+RavelinCore/Keychain/RVNKeychainQuery.m
+RavelinCore/Keychain/RVNKeychainQuery.h
+__34+[RVNKeychainQuery errorWithCode:]_block_invoke
+-[RVNRetryEventStoreBasicOperation initWithStore:]
+-[RVNRetryEventStoreBasicOperation store]
+-[RVNRetryEventStoreBasicOperation setStore:]
+-[RVNRetryEventStoreBasicOperation .cxx_destruct]
+_OBJC_IVAR_$_RVNRetryEventStoreBasicOperation._store
+/Users/distiller/project/RavelinCore/Retry/Persistence/Event/Operation/RVNRetryEventStoreBasicOperation.m
+RavelinCore/Retry/Persistence/Event/Operation/RVNRetryEventStoreBasicOperation.m
+RavelinCore/Retry/Persistence/Event/Operation/RVNRetryEventStoreBasicOperation.h
+-[RVNRetryStatusChecker isSuccessfulResponse:]
+-[RVNRetryStatusChecker isRetryableResponse:error:]
+-[RVNRetryStatusChecker isSuccessfulStatusCode:]
+-[RVNRetryStatusChecker isRetryableStatusCode:]
+-[RVNRetryStatusChecker httpResponse:]
+/Users/distiller/project/RavelinCore/Retry/Action/RVNRetryStatusChecker.m
+RavelinCore/Retry/Action/RVNRetryStatusChecker.m
+/Users/distiller/Library/Developer/Xcode/DerivedData/RavelinCore-eaqzjkalfldrkeckuukhhtvtlhlm/Build/Intermediates.noindex/ArchiveIntermediates/RavelinCore/IntermediateBuildFilesPath/RavelinCore.build/Release-iphoneos/RavelinCore.build/DerivedSources/RavelinCore_vers.c
