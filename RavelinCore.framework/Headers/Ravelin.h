@@ -28,6 +28,15 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Create a singleton instance of the Ravelin sdk with your public key
  @param apiKey The public API key from your Ravelin dashboard
+ @param enableRetry enable/disbale retry events
+ @return The singleton instance of the class
+ - Remark: Use this method when using Ravelin in your app for the first time
+ */
++ (instancetype)createInstance:(NSString *)apiKey enableRetry:(BOOL)enableRetry;
+
+/**
+ Create a singleton instance of the Ravelin sdk with your public key
+ @param apiKey The public API key from your Ravelin dashboard
  @param rsaKey The public RSA key from your Ravelin dashboard
  @return The singleton instance of the class
  - Remark: This method is now deprecated, as encryption is now handled in the RavelinEncrypt framework. Use createInstance:apiKey instead.
