@@ -21,7 +21,7 @@ Add `pod 'RavelinCore'` to your PodFile then from the command line `pod install`
 
 Add the following line to your Cartfile
 
-`github "unravelin/ravelin-ios" == 1.0.1`
+`github "unravelin/ravelin-ios" == 1.0.2`
 
 Then from the command line 
 
@@ -623,4 +623,4 @@ The Ravelin generated device id
 
 # License
 
-License information can be found [here](https://github.com/unravelin/ravelin-ios/blob/1.0.1-docs/LICENSE)
+License information can be found [here](https://github.com/unravelin/ravelin-ios/blob/1.0.2-docs/LICENSE)
